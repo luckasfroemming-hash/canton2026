@@ -789,6 +789,7 @@ img{max-width:100%}
         <div class="user-pill" id="userPill">
           <img class="user-avatar" id="userAvatar" src="" alt="">
           <span class="user-name" id="userName"></span>
+          <button onclick="logoutUser()" title="Sair" style="margin-left:4px;font-size:0.8rem;opacity:0.5;background:none;border:none;cursor:pointer;padding:0 2px;color:var(--text)">✕</button>
         </div>
         <button class="btn-sync" onclick="syncData()">
           <div class="sync-dot" id="syncDot"></div>
@@ -1066,8 +1067,36 @@ const CACHE_KEY='cf26_cache', CACHE_TS='cf26_ts', THEME_KEY='cf26_theme';
 //  INIT
 // ═══════════════════════════════════════════════
 async function init() {
+  // Restaurar tema
   const t = localStorage.getItem(THEME_KEY) || 'dark';
   setTheme(t);
+
+  // Restaurar sessão salva — não pede login toda vez
+  try {
+    const saved = localStorage.getItem('cf26_user');
+    if(saved) {
+      currentUser = JSON.parse(saved);
+      applyUserUI();
+    }
+  } catch(e){}
+
+  // Configurar auto-login silencioso do Google
+  if(CFG.GOOGLE_CLIENT_ID && !CFG.GOOGLE_CLIENT_ID.includes('SEU_GOOGLE')) {
+    if(window.google?.accounts?.id) {
+      google.accounts.id.initialize({
+        client_id: CFG.GOOGLE_CLIENT_ID,
+        callback: onGoogleLogin,
+        auto_select: true,       // tenta logar automaticamente
+        cancel_on_tap_outside: false,
+      });
+      // Só mostra o prompt se ainda não estiver logado
+      if(!currentUser) {
+        google.accounts.id.prompt();
+      }
+    }
+  }
+
+  // Dados
   D = loadCache() || DEFAULTS;
   renderAll();
   if (CFG.SHEET_ID && CFG.SHEET_ID !== 'COLE_SEU_SHEET_ID_AQUI') {
@@ -1206,10 +1235,24 @@ function setTheme(t){
 function onGoogleLogin(response){
   const p=JSON.parse(atob(response.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
   currentUser={name:p.name,email:p.email,picture:p.picture};
+  // Salva sessão no celular para não pedir login toda vez
+  try { localStorage.setItem('cf26_user', JSON.stringify(currentUser)); } catch(e){}
+  applyUserUI();
+}
+
+function applyUserUI(){
+  if(!currentUser) return;
   const pill=document.getElementById('userPill');
   document.getElementById('userAvatar').src=currentUser.picture||'';
   document.getElementById('userName').textContent=currentUser.name?.split(' ')[0]||'';
   pill.classList.add('show');
+  renderPersonalDrive();
+}
+
+function logoutUser(){
+  currentUser=null;
+  try { localStorage.removeItem('cf26_user'); } catch(e){}
+  document.getElementById('userPill').classList.remove('show');
   renderPersonalDrive();
 }
 
@@ -1533,11 +1576,17 @@ function renderPersonalDrive(){
       <div id="googleLoginBtn"></div>
     </div>`;
     if(window.google?.accounts?.id){
-      google.accounts.id.initialize({client_id:CFG.GOOGLE_CLIENT_ID,callback:onGoogleLogin});
+      google.accounts.id.initialize({
+        client_id:CFG.GOOGLE_CLIENT_ID,
+        callback:onGoogleLogin,
+        auto_select:true,
+        cancel_on_tap_outside:false,
+      });
       google.accounts.id.renderButton(document.getElementById('googleLoginBtn'),{
         theme:document.documentElement.getAttribute('data-theme')==='dark'?'filled_black':'outline',
         size:'large',shape:'pill',text:'signin_with',
       });
+      google.accounts.id.prompt();
     }
     return;
   }
