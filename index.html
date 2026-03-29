@@ -591,8 +591,8 @@ img{max-width:100%}
 ═══════════════════════════════════════ */
 .photo-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  grid-template-columns:repeat(2,1fr) !important;
+  gap:10px;
 }
 .photo-card{
   border-radius:var(--radius);
@@ -787,10 +787,12 @@ img{max-width:100%}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
 @media(max-width:440px){
-  .main{padding:16px;padding-bottom:50px}
+  .main{padding:12px;padding-bottom:50px}
   .apps-grid{grid-template-columns:1fr}
-  .photo-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:repeat(2,1fr) !important}
   .brand h1{font-size:1.4rem}
+  .photo-card-desc{font-size:12px}
+  .photo-card-info{padding:7px 8px 8px}
 }
 </style>
 </head>
