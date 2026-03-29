@@ -1090,7 +1090,7 @@ async function syncData(silent=false) {
     const ft = async(name) => {
       const url=`https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(name)}`;
       const r=await fetch(url); const txt=await r.text();
-      const m=txt.match(/setResponse\(([\s\S]*)\);$/);
+      const m=txt.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
       if(!m) return null;
       return parseGViz(JSON.parse(m[1]).table);
     };
@@ -1120,9 +1120,37 @@ async function syncData(silent=false) {
 
 function parseGViz(table) {
   if(!table?.cols?.length) return [];
-  const h=table.cols.map(c=>(c.label||'').toLowerCase().trim().replace(/\s+/g,'_'));
+  const headers = table.cols.map(c=>(c.label||'').toLowerCase().trim().replace(/\s+/g,'_'));
+  const types   = table.cols.map(c=>c.type||'string');
   return (table.rows||[]).filter(r=>r.c?.some(c=>c?.v!=null&&c.v!=='')).map(row=>{
-    const o={}; h.forEach((k,i)=>{o[k]=row.c?.[i]?.v??row.c?.[i]?.f??'';}); return o;
+    const o={};
+    headers.forEach((k,i)=>{
+      const cell = row.c?.[i];
+      if(!cell||cell.v==null){ o[k]=''; return; }
+      const t = types[i];
+      // Horário vem como decimal (ex: 16:35 → 0.6909...)
+      if(t==='timeofday'||t==='time'){
+        const arr=cell.v; // [H, M, S, ms]
+        if(Array.isArray(arr)){
+          o[k]=String(arr[0]).padStart(2,'0')+':'+String(arr[1]).padStart(2,'0');
+        } else if(typeof cell.v==='number'){
+          const tot=Math.round(cell.v*1440);
+          o[k]=String(Math.floor(tot/60)).padStart(2,'0')+':'+String(tot%60).padStart(2,'0');
+        } else { o[k]=cell.f||cell.v||''; }
+        return;
+      }
+      // Data vem como objeto Date ou string "Date(...)"
+      if(t==='date'||t==='datetime'){
+        o[k]=cell.f||String(cell.v)||''; return;
+      }
+      // Boolean
+      if(t==='boolean'){ o[k]=cell.v?'sim':'não'; return; }
+      // Padrão: preferir valor formatado para números que parecem texto
+      o[k] = (cell.f !== undefined && cell.f !== null && cell.f !== '') ? cell.f : cell.v;
+      if(typeof o[k]==='number') o[k]=String(o[k]);
+      o[k]=o[k]??'';
+    });
+    return o;
   });
 }
 
