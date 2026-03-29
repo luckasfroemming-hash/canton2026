@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canton Fair 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+
+/* ═══════════════════════════════════════
+   TEMA ESCURO — Azul Marinho Aconchegante
+═══════════════════════════════════════ */
+:root {
+  --gold:        #e2b84a;
+  --gold-light:  #f0d080;
+  --gold-dim:    rgba(226,184,74,0.15);
+  --gold-border: rgba(226,184,74,0.35);
+
+  --bg:       #1b2340;
+  --bg2:      #202a4a;
+  --bg3:      #263055;
+  --bg4:      #2d3860;
+  --bg5:      #364270;
+
+  --text:     #f0ece4;
+  --text-soft:#c8c2b4;
+  --text-dim: #8a91aa;
+
+  --border:      rgba(226,184,74,0.22);
+  --border-soft: rgba(255,255,255,0.1);
+  --shadow:      0 6px 28px rgba(0,0,0,0.45);
+  --shadow-sm:   0 2px 10px rgba(0,0,0,0.3);
+  --shadow-btn:  0 3px 12px rgba(0,0,0,0.4);
+
+  --green:  #4cbb7f;
+  --red:    #e05555;
+  --blue:   #4a9edd;
+  --orange: #e8834a;
+
+  --radius:     16px;
+  --radius-sm:  10px;
+  --radius-pill:50px;
+  --trans:      0.2s cubic-bezier(0.4,0,0.2,1);
+
+  --fs-base: 17px;
+  --fs-sm:   14px;
+  --fs-xs:   12px;
+  --fs-lg:   19px;
+  --fs-xl:   22px;
+  --fs-h:    26px;
+}
+
+/* ═══════════════════════════════════════
+   TEMA CLARO — Creme Quente Legível
+═══════════════════════════════════════ */
+[data-theme="light"] {
+  --gold:        #9a6c10;
+  --gold-light:  #b8800f;
+  --gold-dim:    rgba(154,108,16,0.1);
+  --gold-border: rgba(154,108,16,0.28);
+
+  --bg:       #f8f4ee;
+  --bg2:      #f0ebe2;
+  --bg3:      #ffffff;
+  --bg4:      #ede8df;
+  --bg5:      #e4ddd2;
+
+  --text:     #1e2535;
+  --text-soft:#3d4a5c;
+  --text-dim: #7a8494;
+
+  --border:      rgba(154,108,16,0.2);
+  --border-soft: rgba(0,0,0,0.08);
+  --shadow:      0 4px 20px rgba(0,0,0,0.1);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.07);
+  --shadow-btn:  0 3px 10px rgba(0,0,0,0.12);
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',sans-serif;
+  font-size:var(--fs-base);
+  line-height:1.6;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  transition:background var(--trans),color var(--trans);
+  -webkit-tap-highlight-color:transparent;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+img{max-width:100%}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+/* ═══════════════════════════════════════
+   HEADER
+═══════════════════════════════════════ */
+.header{
+  position:sticky;top:0;z-index:200;
+  background:var(--bg);
+  border-bottom:2px solid var(--border);
+  box-shadow:var(--shadow-sm);
+  transition:background var(--trans);
+}
+.header-inner{max-width:760px;margin:0 auto;padding:16px 18px 0}
+
+.header-row1{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+  gap:12px;
+}
+
+.brand h1{
+  font-family:'Playfair Display',serif;
+  font-size:1.7rem;font-weight:700;
+  color:var(--gold);line-height:1.1;
+  letter-spacing:0.01em;
+}
+.brand p{
+  font-size:var(--fs-xs);
+  color:var(--text-dim);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-top:3px;
+  font-weight:600;
+}
+
+.header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+
+/* Sync */
+.btn-sync{
+  display:flex;align-items:center;gap:6px;
+  padding:9px 15px;
+  background:var(--bg3);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius-pill);
+  font-size:var(--fs-sm);font-weight:600;
+  color:var(--text-dim);
+  transition:all var(--trans);
+  box-shadow:var(--shadow-btn);
+}
+.btn-sync:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
+.sync-dot.loading{background:var(--gold);animation:pulse 1s infinite}
+.sync-dot.error{background:var(--red)}
+@keyframes pulse{50%{opacity:.35}}
+
+/* Theme toggle */
+.theme-btn{
+  width:44px;height:44px;
+  background:var(--bg3);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+  transition:all var(--trans);
+  box-shadow:var(--shadow-btn);
+}
+.theme-btn:hover{border-color:var(--gold);background:var(--gold-dim)}
+
+/* User pill */
+.user-pill{
+  display:none;align-items:center;gap:8px;
+  padding:6px 14px 6px 6px;
+  background:var(--bg3);
+  border:2px solid var(--gold-border);
+  border-radius:var(--radius-pill);
+  font-size:var(--fs-sm);font-weight:600;
+  box-shadow:var(--shadow-sm);
+}
+.user-pill.show{display:flex}
+.user-avatar{width:28px;height:28px;border-radius:50%;background:var(--gold-dim);border:2px solid var(--gold-border);object-fit:cover}
+.user-name{color:var(--text);max-width:100px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+
+/* ═══════════════════════════════════════
+   TABS — Maiores, mais clicáveis
+═══════════════════════════════════════ */
+.tabs{
+  display:flex;gap:4px;
+  overflow-x:auto;scrollbar-width:none;
+  padding-bottom:1px;
+}
+.tabs::-webkit-scrollbar{display:none}
+
+.tab{
+  flex-shrink:0;
+  display:flex;align-items:center;gap:6px;
+  padding:11px 16px 12px;
+  font-size:var(--fs-sm);font-weight:700;
+  color:var(--text-dim);
+  border-bottom:3px solid transparent;
+  border-radius:var(--radius-sm) var(--radius-sm) 0 0;
+  cursor:pointer;
+  transition:all var(--trans);
+  white-space:nowrap;
+  letter-spacing:0.02em;
+}
+.tab:hover:not(.active){
+  color:var(--text-soft);
+  background:var(--bg3);
+}
+.tab.active{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+  background:var(--gold-dim);
+}
+.tab-icon{font-size:1.1rem}
+
+/* ═══════════════════════════════════════
+   MAIN LAYOUT
+═══════════════════════════════════════ */
+.main{max-width:760px;margin:0 auto;padding:22px 18px 50px}
+.section{display:none}
+.section.active{display:block}
+
+/* ═══════════════════════════════════════
+   ALERT BANNER
+═══════════════════════════════════════ */
+.alert-banner{
+  display:none;align-items:flex-start;gap:14px;
+  background:linear-gradient(135deg,rgba(224,85,85,.14),rgba(224,85,85,.05));
+  border:2px solid rgba(224,85,85,.4);
+  border-radius:var(--radius);
+  padding:16px 18px;margin-bottom:22px;
+}
+.alert-banner.show{display:flex}
+.alert-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.alert-body h4{font-size:var(--fs-base);font-weight:700;color:var(--red);margin-bottom:4px}
+.alert-body p{font-size:var(--fs-sm);color:var(--text-soft);line-height:1.6}
+
+/* ═══════════════════════════════════════
+   SECTION HEADER
+═══════════════════════════════════════ */
+.sec-header{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.sec-icon{
+  width:44px;height:44px;
+  background:var(--gold-dim);
+  border:2px solid var(--gold-border);
+  border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+.sec-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:var(--fs-h);font-weight:700;
+  color:var(--text);
+}
+
+/* ═══════════════════════════════════════
+   VIEW TOGGLE (Cronograma)
+═══════════════════════════════════════ */
+.view-toggle{
+  display:flex;
+  background:var(--bg3);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius-pill);
+  padding:4px;
+  gap:4px;
+  margin-bottom:20px;
+  width:fit-content;
+  box-shadow:var(--shadow-sm);
+}
+.view-btn{
+  padding:9px 20px;
+  border-radius:var(--radius-pill);
+  font-size:var(--fs-sm);font-weight:700;
+  color:var(--text-dim);
+  transition:all var(--trans);
+  display:flex;align-items:center;gap:6px;
+}
+.view-btn.active{
+  background:var(--gold);
+  color:var(--bg);
+  box-shadow:0 2px 8px rgba(226,184,74,.4);
+}
+.view-btn:hover:not(.active){color:var(--text);background:var(--bg4)}
+
+/* ═══════════════════════════════════════
+   DIA CHIPS (Lista)
+═══════════════════════════════════════ */
+.day-scroller{
+  display:flex;gap:10px;
+  overflow-x:auto;scrollbar-width:none;
+  margin-bottom:22px;padding-bottom:2px;
+}
+.day-scroller::-webkit-scrollbar{display:none}
+
+.day-chip{
+  flex-shrink:0;
+  padding:10px 15px;
+  background:var(--bg3);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius-sm);
+  cursor:pointer;text-align:center;
+  transition:all var(--trans);
+  min-width:60px;
+  box-shadow:var(--shadow-sm);
+}
+.day-chip:hover{border-color:var(--gold-border);transform:translateY(-2px);box-shadow:var(--shadow)}
+.day-chip.active{background:var(--gold-dim);border-color:var(--gold);box-shadow:0 3px 12px rgba(226,184,74,.25)}
+.chip-num{display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text);line-height:1}
+.day-chip.active .chip-num{color:var(--gold)}
+.chip-mes{display:block;font-size:var(--fs-xs);color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;font-weight:700}
+.chip-tag{display:block;font-size:10px;background:var(--gold-dim);color:var(--gold);border-radius:4px;padding:2px 5px;margin-top:4px;font-weight:700}
+
+.dia-block{display:none}
+.dia-block.active{display:block}
+
+.dia-label-card{
+  background:linear-gradient(135deg,var(--bg3),var(--bg4));
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;margin-bottom:16px;
+  box-shadow:var(--shadow-sm);
+}
+.dia-label-card h3{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:700;color:var(--gold);margin-bottom:5px}
+.dia-label-card p{font-size:var(--fs-base);color:var(--text-soft);line-height:1.5}
+
+/* ═══════════════════════════════════════
+   CALENDÁRIO MENSAL
+═══════════════════════════════════════ */
+.cal-wrap{animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.cal-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:18px;
+  background:var(--bg3);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius);
+  padding:14px 18px;
+  box-shadow:var(--shadow-sm);
+}
+.cal-nav-btn{
+  width:42px;height:42px;
+  border-radius:var(--radius-sm);
+  background:var(--bg4);
+  border:2px solid var(--border-soft);
+  font-size:1.1rem;font-weight:700;
+  color:var(--text-soft);
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--trans);
+  box-shadow:var(--shadow-sm);
+}
+.cal-nav-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+.cal-month-label{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:700;color:var(--text)}
+
+.cal-grid{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:6px;margin-bottom:20px;
+}
+.cal-dow{
+  text-align:center;
+  font-size:var(--fs-xs);font-weight:700;
+  color:var(--text-dim);
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 0;
+}
+.cal-day{
+  aspect-ratio:1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  font-size:var(--fs-base);font-weight:600;
+  color:var(--text-soft);
+  background:var(--bg3);
+  border:2px solid transparent;
+  transition:all var(--trans);
+  gap:3px;
+  min-height:52px;
+  box-shadow:var(--shadow-sm);
+}
+.cal-day:hover:not(.empty){border-color:var(--gold-border);color:var(--text);background:var(--gold-dim);transform:scale(1.06)}
+.cal-day.empty{background:transparent;box-shadow:none;cursor:default;border:none}
+.cal-day.has-events{border-color:var(--gold-border)}
+.cal-day.active-day{background:var(--gold);color:var(--bg);border-color:var(--gold);box-shadow:0 3px 14px rgba(226,184,74,.45)}
+.cal-day.active-day:hover{transform:scale(1.06)}
+.cal-dots{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;max-width:36px}
+.cal-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.cal-dot.viagem   {background:#4a9edd}
+.cal-dot.feira    {background:var(--gold)}
+.cal-dot.alimentacao{background:#4cbb7f}
+.cal-dot.visita   {background:#b07ee8}
+.cal-dot.hotel    {background:var(--orange)}
+.cal-dot.livre    {background:var(--text-dim)}
+
+.cal-day-detail{
+  background:var(--bg3);
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  margin-bottom:16px;
+  box-shadow:var(--shadow-sm);
+  animation:fadeIn .2s ease;
+}
+.cal-day-detail h3{font-family:'Playfair Display',serif;font-size:var(--fs-xl);color:var(--gold);margin-bottom:16px}
+
+/* ═══════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════ */
+.tl{position:relative}
+.tl::before{
+  content:'';position:absolute;
+  left:20px;top:22px;bottom:22px;width:2px;
+  background:linear-gradient(to bottom,var(--gold),transparent);
+  opacity:.2;
+}
+
+.tl-item{display:flex;gap:14px;margin-bottom:14px;animation:fadeIn .3s ease both}
+
+.tl-dot{
+  flex-shrink:0;width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;position:relative;z-index:1;
+  border:2px solid transparent;
+  box-shadow:var(--shadow-sm);
+}
+.tl-dot.viagem    {background:rgba(74,158,221,.2);border-color:rgba(74,158,221,.4)}
+.tl-dot.feira     {background:var(--gold-dim);border-color:var(--gold-border)}
+.tl-dot.alimentacao{background:rgba(76,187,127,.15);border-color:rgba(76,187,127,.35)}
+.tl-dot.visita    {background:rgba(176,126,232,.15);border-color:rgba(176,126,232,.35)}
+.tl-dot.hotel     {background:rgba(232,131,74,.15);border-color:rgba(232,131,74,.35)}
+.tl-dot.livre     {background:var(--bg4);border-color:var(--border-soft)}
+
+.tl-card{
+  flex:1;
+  background:var(--bg3);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  box-shadow:var(--shadow-sm);
+  transition:all var(--trans);
+  cursor:default;
+}
+.tl-card:hover{border-color:var(--gold-border);transform:translateX(3px);box-shadow:var(--shadow)}
+
+.tl-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.tl-title{font-size:var(--fs-base);font-weight:700;color:var(--text);flex:1;line-height:1.3}
+.tl-time{
+  font-size:var(--fs-xs);font-weight:700;color:var(--gold);
+  background:var(--gold-dim);
+  padding:3px 10px;border-radius:var(--radius-pill);
+  flex-shrink:0;margin-left:10px;border:1px solid var(--gold-border);
+}
+.tl-desc{font-size:var(--fs-sm);color:var(--text-soft);line-height:1.6;margin-bottom:8px}
+.tl-loc{display:flex;align-items:center;gap:6px;font-size:var(--fs-sm);color:var(--text-dim);flex-wrap:wrap}
+.chinese-badge{
+  font-size:var(--fs-sm);color:var(--gold);
+  background:var(--gold-dim);
+  padding:2px 8px;border-radius:6px;border:1px solid var(--gold-border);
+  font-weight:600;
+}
+
+/* ═══════════════════════════════════════
+   COPY BUTTON
+═══════════════════════════════════════ */
+.copy-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:var(--fs-xs);font-weight:700;
+  color:var(--text-dim);
+  background:var(--bg4);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius-sm);
+  padding:5px 10px;margin-top:7px;cursor:pointer;
+  transition:all var(--trans);box-shadow:var(--shadow-sm);
+}
+.copy-btn:hover{color:var(--gold);border-color:var(--gold-border);background:var(--gold-dim)}
+.copy-btn.copied{color:var(--green);border-color:rgba(76,187,127,.4)}
+
+/* ═══════════════════════════════════════
+   RESTAURANTES
+═══════════════════════════════════════ */
+.rest-grid{display:flex;flex-direction:column;gap:14px}
+
+.rest-card{
+  background:var(--bg3);
+  border:2px solid var(--border-soft);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:all var(--trans);
+}
+.rest-card:hover{border-color:var(--gold-border);box-shadow:var(--shadow)}
+
+.rest-head{
+  padding:16px 18px 12px;
+  border-bottom:2px solid var(--border-soft);
+  display:flex;justify-content:space-between;align-items:flex-start;
+}
+.rest-name{font-size:var(--fs-lg);font-weight:700;color:var(--text)}
+.rest-sub{font-size:var(--fs-sm);color:var(--text-dim);margin-top:3px;font-weight:500}
+
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;
+  padding:5px 12px;border-radius:var(--radius-pill);
+  flex-shrink:0;margin-left:12px;border:2px solid transparent;
+}
+.badge-gold  {background:var(--gold-dim);color:var(--gold);border-color:var(--gold-border)}
+.badge-red   {background:rgba(224,85,85,.12);color:var(--red);border-color:rgba(224,85,85,.3)}
+.badge-green {background:rgba(76,187,127,.12);color:var(--green);border-color:rgba(76,187,127,.3)}
+.badge-purple{background:rgba(176,126,232,.12);color:#b07ee8;border-color:rgba(176,126,232,.3)}
+
+.rest-body{padding:14px 18px;display:flex;flex-direction:column;gap:10px}
+.rest-row{display:flex;gap:10px;font-size:var(--fs-base)}
+.rest-row-lbl{color:var(--text-dim);flex-shrink:0;min-width:65px;font-weight:600}
+.rest-row-val{color:var(--text-soft);line-height:1.5}
+
+/* ═══════════════════════════════════════
+   DICAS
+═══════════════════════════════════════ */
+.dica-acc{display:flex;flex-direction:column;gap:12px}
+
+.dica-block{
+  background:var(--bg3);border:2px solid var(--border-soft);
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.dica-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 18px;cursor:pointer;
+  transition:background var(--trans);user-select:none;
+}
+.dica-head:hover{background:var(--bg4)}
+.dica-head-left{display:flex;align-items:center;gap:12px}
+.dica-head-icon{font-size:1.3rem}
+.dica-head-name{font-size:var(--fs-lg);font-weight:700;color:var(--text)}
+.dica-count{
+  font-size:var(--fs-xs);font-weight:700;color:var(--gold);
+  background:var(--gold-dim);
+  padding:3px 9px;border-radius:var(--radius-pill);border:1px solid var(--gold-border);
+}
+.dica-arrow{font-size:.9rem;color:var(--text-dim);transition:transform var(--trans);font-weight:700}
+.dica-head.open .dica-arrow{transform:rotate(180deg)}
+.dica-body{display:none;border-top:2px solid var(--border-soft)}
+.dica-body.open{display:block}
+.dica-item{
+  padding:14px 18px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  display:flex;gap:12px;
+}
+[data-theme="light"] .dica-item{border-bottom-color:rgba(0,0,0,.04)}
+.dica-item:last-child{border-bottom:none}
+.dica-item-ico{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.dica-item h4{font-size:var(--fs-base);font-weight:700;color:var(--text);margin-bottom:4px}
+.dica-item p{font-size:var(--fs-sm);color:var(--text-soft);line-height:1.6}
+
+/* ═══════════════════════════════════════
+   CONTATOS
+═══════════════════════════════════════ */
+.cont-list{display:flex;flex-direction:column;gap:10px}
+
+.cont-card{
+  background:var(--bg3);border:2px solid var(--border-soft);
+  border-radius:var(--radius);
+  padding:15px 18px;
+  display:flex;align-items:center;gap:14px;
+  box-shadow:var(--shadow-sm);
+  transition:all var(--trans);
+}
+.cont-card:hover{border-color:var(--gold-border);box-shadow:var(--shadow)}
+.cont-info{flex:1;min-width:0}
+.cont-nome{font-size:var(--fs-lg);font-weight:700;color:var(--text)}
+.cont-funcao{font-size:var(--fs-sm);color:var(--text-dim);margin-top:2px;font-weight:500}
+.cont-tel{font-size:var(--fs-sm);color:var(--gold);margin-top:3px;font-weight:700}
+.cont-btns{display:flex;gap:8px;flex-shrink:0}
+.icon-btn{
+  width:44px;height:44px;border-radius:var(--radius-sm);
+  background:var(--bg4);border:2px solid var(--border-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  transition:all var(--trans);text-decoration:none;
+  box-shadow:var(--shadow-sm);
+}
+.icon-btn:hover{border-color:var(--gold-border);background:var(--gold-dim);transform:translateY(-2px)}
+.icon-btn.wpp:hover{background:rgba(76,187,127,.15);border-color:rgba(76,187,127,.45)}
+
+/* ═══════════════════════════════════════
+   GALERIA — 2 colunas
+═══════════════════════════════════════ */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.photo-card{
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:var(--bg4);
+  border:2px solid var(--border-soft);
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;
+  transition:all var(--trans);
+  display:block;text-decoration:none;
+}
+.photo-card:hover{border-color:var(--gold-border);transform:scale(1.02);box-shadow:var(--shadow)}
+.photo-card img{
+  width:100%;height:160px;
+  object-fit:cover;
+  display:block;
+  transition:transform var(--trans);
+}
+.photo-card:hover img{transform:scale(1.05)}
+.photo-card-info{padding:10px 12px}
+.photo-card-desc{font-size:var(--fs-sm);font-weight:600;color:var(--text);margin-bottom:2px;line-height:1.3}
+.photo-card-meta{font-size:var(--fs-xs);color:var(--text-dim);font-weight:500}
+.photo-card-date{font-size:var(--fs-xs);color:var(--gold);font-weight:700;margin-bottom:8px}
+
+/* Agrupamento por data */
+.photo-day-group{margin-bottom:24px}
+.photo-day-label{
+  font-family:'Playfair Display',serif;
+  font-size:var(--fs-lg);font-weight:700;
+  color:var(--text);
+  margin-bottom:12px;
+  padding-bottom:8px;
+  border-bottom:2px solid var(--border-soft);
+  display:flex;align-items:center;gap:8px;
+}
+.photo-day-label::before{content:'📅';font-family:initial}
+
+.photo-empty{
+  text-align:center;padding:40px 20px;
+  color:var(--text-dim);
+  background:var(--bg3);border:2px dashed var(--border-soft);
+  border-radius:var(--radius);
+}
+.photo-empty-icon{font-size:3rem;margin-bottom:12px;opacity:.4;display:block}
+.photo-empty p{font-size:var(--fs-base);line-height:1.6}
+.photo-empty small{font-size:var(--fs-sm);opacity:.7}
+
+/* ═══════════════════════════════════════
+   ARQUIVOS
+═══════════════════════════════════════ */
+.drive-section{margin-bottom:26px}
+.drive-section-title{
+  font-size:var(--fs-xs);font-weight:700;
+  color:var(--text-dim);letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.drive-btn{
+  display:flex;align-items:center;gap:14px;width:100%;
+  padding:16px 18px;
+  background:var(--bg3);border:2px solid var(--border-soft);
+  border-radius:var(--radius);text-decoration:none;
+  box-shadow:var(--shadow-sm);
+  transition:all var(--trans);margin-bottom:10px;
+}
+.drive-btn:hover{border-color:var(--gold-border);transform:translateX(4px);box-shadow:var(--shadow)}
+.drive-btn-icon{
+  width:48px;height:48px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.drive-btn-icon.shared  {background:rgba(74,158,221,.18);border:2px solid rgba(74,158,221,.3)}
+.drive-btn-icon.personal{background:var(--gold-dim);border:2px solid var(--gold-border)}
+.drive-btn-text{flex:1;text-align:left}
+.drive-btn-text strong{display:block;font-size:var(--fs-base);font-weight:700;color:var(--text);margin-bottom:3px}
+.drive-btn-text span{font-size:var(--fs-sm);color:var(--text-dim);font-weight:500}
+.drive-btn-arrow{font-size:1.1rem;color:var(--text-dim);font-weight:700}
+
+.drive-locked{
+  background:var(--bg3);border:2px dashed var(--border-soft);
+  border-radius:var(--radius);padding:24px 18px;text-align:center;
+  color:var(--text-dim);font-size:var(--fs-base);
+}
+.drive-locked-icon{font-size:2.2rem;margin-bottom:10px;opacity:.45;display:block}
+
+/* ═══════════════════════════════════════
+   APPS — Com ícones reais
+═══════════════════════════════════════ */
+.apps-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px;margin-top:6px;
+}
+.app-card{
+  background:var(--bg3);border:2px solid var(--border-soft);
+  border-radius:var(--radius);padding:16px;
+  box-shadow:var(--shadow-sm);
+  transition:all var(--trans);
+}
+.app-card:hover{border-color:var(--gold-border);box-shadow:var(--shadow);transform:translateY(-2px)}
+.app-icon-wrap{
+  width:52px;height:52px;border-radius:14px;
+  overflow:hidden;margin-bottom:10px;
+  background:var(--bg4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;flex-shrink:0;
+  border:2px solid var(--border-soft);
+}
+.app-icon-wrap img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.app-name{font-size:var(--fs-base);font-weight:700;color:var(--text);margin-bottom:4px}
+.app-desc{font-size:var(--fs-sm);color:var(--text-soft);line-height:1.5}
+.app-obr{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;font-weight:700;
+  background:rgba(76,187,127,.12);color:var(--green);
+  border:2px solid rgba(76,187,127,.28);
+  padding:3px 10px;border-radius:var(--radius-pill);margin-top:8px;
+}
+
+/* ═══════════════════════════════════════
+   LOGIN CARD
+═══════════════════════════════════════ */
+.login-card{
+  background:var(--bg3);border:2px solid var(--border);
+  border-radius:var(--radius);padding:30px 24px;
+  text-align:center;margin-bottom:22px;
+  box-shadow:var(--shadow-sm);
+}
+.login-card-icon{font-size:2.8rem;margin-bottom:14px;display:block}
+.login-card h3{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:700;color:var(--gold);margin-bottom:8px}
+.login-card p{font-size:var(--fs-base);color:var(--text-dim);margin-bottom:20px;line-height:1.6}
+.btn-login{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 26px;background:var(--gold);
+  color:var(--bg);border-radius:var(--radius-pill);
+  font-size:var(--fs-base);font-weight:700;
+  transition:all var(--trans);
+  box-shadow:0 4px 16px rgba(226,184,74,.35);
+}
+.btn-login:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(226,184,74,.45)}
+
+/* ═══════════════════════════════════════
+   SPINNER
+═══════════════════════════════════════ */
+.spinner-wrap{text-align:center;padding:40px 20px;color:var(--text-dim)}
+.spinner{
+  width:36px;height:36px;border:3px solid var(--border-soft);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin .75s linear infinite;margin:0 auto 12px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner-label{font-size:var(--fs-base);font-weight:500}
+
+/* ═══════════════════════════════════════
+   FOOTER + TOAST
+═══════════════════════════════════════ */
+.footer{
+  text-align:center;padding:26px 18px;
+  font-size:var(--fs-sm);font-weight:500;color:var(--text-dim);
+  border-top:2px solid var(--border-soft);margin-top:36px;line-height:1.8;
+}
+.footer span{color:var(--gold);font-weight:700}
+
+.toast{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--bg3);border:2px solid var(--gold-border);
+  color:var(--text);padding:12px 24px;
+  border-radius:var(--radius-pill);
+  font-size:var(--fs-base);font-weight:600;
+  z-index:9999;
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+  white-space:nowrap;box-shadow:var(--shadow);pointer-events:none;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@media(max-width:440px){
+  .main{padding:16px;padding-bottom:50px}
+  .apps-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:1fr}
+  .brand h1{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-row1">
+      <div class="brand">
+        <h1>Canton Fair 2026</h1>
+        <p>🇨🇳 Guangzhou · Abr 11–28 · 8 viajantes</p>
+      </div>
+      <div class="header-actions">
+        <div class="user-pill" id="userPill">
+          <img class="user-avatar" id="userAvatar" src="" alt="">
+          <span class="user-name" id="userName"></span>
+        </div>
+        <button class="btn-sync" onclick="syncData()">
+          <div class="sync-dot" id="syncDot"></div>
+          <span id="syncLabel">Sync</span>
+        </button>
+        <button class="theme-btn" onclick="toggleTheme()" title="Alternar tema" id="themeBtn">🌙</button>
+      </div>
+    </div>
+    <div class="tabs" id="tabsBar">
+      <div class="tab active" data-tab="cronograma"><span class="tab-icon">📅</span>Cronograma</div>
+      <div class="tab" data-tab="restaurantes"><span class="tab-icon">🍜</span>Restaurantes</div>
+      <div class="tab" data-tab="dicas"><span class="tab-icon">💡</span>Dicas</div>
+      <div class="tab" data-tab="contatos"><span class="tab-icon">📞</span>Contatos</div>
+      <div class="tab" data-tab="galeria"><span class="tab-icon">📷</span>Fotos</div>
+      <div class="tab" data-tab="arquivos"><span class="tab-icon">📂</span>Arquivos</div>
+      <div class="tab" data-tab="apps"><span class="tab-icon">📱</span>Apps</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="alert-banner" id="alertBanner">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <h4 id="alertTitle">Aviso</h4>
+      <p id="alertText"></p>
+    </div>
+  </div>
+
+  <!-- ══ CRONOGRAMA ══ -->
+  <div class="section active" id="sec-cronograma">
+    <div class="sec-header">
+      <div class="sec-icon">📅</div>
+      <h2>Cronograma</h2>
+    </div>
+    <!-- Toggle Visualização -->
+    <div class="view-toggle">
+      <button class="view-btn active" id="btnLista" onclick="setView('lista')">📋 Lista</button>
+      <button class="view-btn" id="btnCal" onclick="setView('calendario')">📅 Calendário</button>
+    </div>
+    <!-- Vista Lista -->
+    <div id="viewLista">
+      <div class="day-scroller" id="dayScroller"></div>
+      <div id="dayBlocks"></div>
+    </div>
+    <!-- Vista Calendário -->
+    <div id="viewCal" style="display:none">
+      <div class="cal-wrap">
+        <div class="cal-nav">
+          <button class="cal-nav-btn" onclick="calPrev()">‹</button>
+          <div class="cal-month-label" id="calMonthLabel"></div>
+          <button class="cal-nav-btn" onclick="calNext()">›</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div id="calDayDetail"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ RESTAURANTES ══ -->
+  <div class="section" id="sec-restaurantes">
+    <div class="sec-header"><div class="sec-icon">🍜</div><h2>Restaurantes</h2></div>
+    <div class="rest-grid" id="restGrid">
+      <div class="spinner-wrap"><div class="spinner"></div><p class="spinner-label">Carregando...</p></div>
+    </div>
+  </div>
+
+  <!-- ══ DICAS ══ -->
+  <div class="section" id="sec-dicas">
+    <div class="sec-header"><div class="sec-icon">💡</div><h2>Dicas Essenciais</h2></div>
+    <div class="dica-acc" id="dicaAcc">
+      <div class="spinner-wrap"><div class="spinner"></div><p class="spinner-label">Carregando...</p></div>
+    </div>
+  </div>
+
+  <!-- ══ CONTATOS ══ -->
+  <div class="section" id="sec-contatos">
+    <div class="sec-header"><div class="sec-icon">📞</div><h2>Contatos</h2></div>
+    <div class="cont-list" id="contList">
+      <div class="spinner-wrap"><div class="spinner"></div></div>
+    </div>
+  </div>
+
+  <!-- ══ GALERIA ══ -->
+  <div class="section" id="sec-galeria">
+    <div class="sec-header"><div class="sec-icon">📷</div><h2>Fotos da Viagem</h2></div>
+    <div id="photoContainer">
+      <div class="spinner-wrap"><div class="spinner"></div><p class="spinner-label">Carregando fotos...</p></div>
+    </div>
+  </div>
+
+  <!-- ══ ARQUIVOS ══ -->
+  <div class="section" id="sec-arquivos">
+    <div class="sec-header"><div class="sec-icon">📂</div><h2>Arquivos da Viagem</h2></div>
+    <div class="drive-section">
+      <div class="drive-section-title">📁 Arquivos do Grupo</div>
+      <a id="sharedDriveBtn" href="#" target="_blank" class="drive-btn">
+        <div class="drive-btn-icon shared">📁</div>
+        <div class="drive-btn-text">
+          <strong>Canton Fair 2026 — Grupo</strong>
+          <span>Documentos compartilhados, roteiro, mapas e informações gerais</span>
+        </div>
+        <div class="drive-btn-arrow">→</div>
+      </a>
+    </div>
+    <div class="drive-section">
+      <div class="drive-section-title">🔒 Minha Pasta Pessoal</div>
+      <div id="personalDriveArea"></div>
+    </div>
+  </div>
+
+  <!-- ══ APPS ══ -->
+  <div class="section" id="sec-apps">
+    <div class="sec-header"><div class="sec-icon">📱</div><h2>Apps Essenciais</h2></div>
+    <p style="font-size:var(--fs-base);color:var(--text-dim);margin-bottom:18px;line-height:1.6;font-weight:500;">
+      Instale <strong style="color:var(--text)">antes de embarcar</strong>. Alguns não podem ser baixados na China.
+    </p>
+    <div class="apps-grid" id="appsGrid">
+      <div class="spinner-wrap"><div class="spinner"></div></div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<div class="footer">
+  Canton Fair 2026 · Organizado por <span>Lucas Froemming</span><br>
+  Última sincronização: <span id="lastSync">—</span>
+</div>
+
+<div id="g_id_onload"
+  data-client_id="SEU_GOOGLE_CLIENT_ID_AQUI"
+  data-callback="onGoogleLogin"
+  data-auto_select="false"
+  style="display:none">
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  CONFIGURAÇÃO
+// ═══════════════════════════════════════════════
+const CFG = {
+  SHEET_ID: '14oYhehGfBC89vCewlbZyQlbV2dGoqNYL0lR3nru7vh0',
+  GOOGLE_CLIENT_ID: 'SEU_GOOGLE_CLIENT_ID_AQUI',
+  SHARED_DRIVE_URL: 'https://drive.google.com/drive/u/0/folders/1rYo8fL81SrG9tCH4jjiQRNjcUB4Y5r0V',
+  CACHE_HOURS: 8,
+  TABS: {
+    cronograma:'Cronograma', restaurantes:'Restaurantes',
+    dicas:'Dicas', contatos:'Contatos', apps:'Apps',
+    avisos:'Avisos', membros:'Membros', fotos:'Fotos', config:'Config',
+  },
+};
+
+// ═══════════════════════════════════════════════
+//  ÍCONES PADRÃO DOS APPS (fallback se não tiver URL na planilha)
+// ═══════════════════════════════════════════════
+const APP_ICONS = {
+  'WhatsApp':       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/120px-WhatsApp.svg.png',
+  'WeChat':         'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/WeChat_logo.svg/120px-WeChat_logo.svg.png',
+  'Alipay':         'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Alipay_%28LOGO%29.svg/120px-Alipay_%28LOGO%29.svg.png',
+  'Google Translate':'https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Translate_Icon.png',
+  'Maps.me':        'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/MAPS.ME_logo.svg/120px-MAPS.ME_logo.svg.png',
+  'Didi':           'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/DiDi_company_logo.svg/120px-DiDi_company_logo.svg.png',
+  'XE Currency':    'https://play-lh.googleusercontent.com/1IlOqVzOlXo7DWHGcW3J3e5iBNSXxbqFXcfWX4XpAhh6sB1dU3pIVVy4fJlxKJqbBg=w120-h120',
+  'Wanderlog':      'https://play-lh.googleusercontent.com/SsS0o7-xT-S2tB5bZLtWFBeSoYTiHN8Vv0Ln7rPNBfJz5LK0-dT9nGD4FU5QzW5mw=w120-h120',
+  'Google Photos':  'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/120px-Google_Photos_icon_%282020%29.svg.png',
+};
+
+// ═══════════════════════════════════════════════
+//  DEFAULTS
+// ═══════════════════════════════════════════════
+const DEFAULTS = {
+  config: {
+    titulo_aviso:'⚠️ Atenção — Alfândega Brasileira',
+    texto_aviso:'Limite de isenção: USD 500 por pessoa. Itens acima devem ser declarados. Réplicas podem ser apreendidas na volta.',
+    aviso_ativo:'sim',
+    shared_drive_url: CFG.SHARED_DRIVE_URL,
+  },
+  membros:[
+    {nome:'Lucas',  email:'luckasfroemming@gmail.com',pasta_id:'1IBWh-_Hg2QnZDiaB1MDP_V2hxZ6fKyPK'},
+    {nome:'Júlio',  email:'motorsmecmga@gmail.com',   pasta_id:'16sQXHZhpmWYoHpqRU6qAkcIkv2WM93x1'},
+    {nome:'Robinho',email:'racomerciomga@gmail.com',  pasta_id:'17OSHJT1KTajONBYIy7xhXL5xNZsau6OL'},
+    {nome:'Adriano',email:'mhautopartsbr@gmail.com',  pasta_id:'1lyAWKFCrxmj0-Z3dAtHm8gb_msS0J00D'},
+    {nome:'Thiago', email:'clinicadopisoimp@gmail.com',pasta_id:'1-3NmHfCF3kUcLo1MLEPcxIXSbNCtz6wH'},
+    {nome:'Paulo',  email:'donpaolodk@gmail.com',     pasta_id:'1e3hi9U9YC4XfmmXgXDV1MwEYq8UwNtSC'},
+    {nome:'Agnaldo',email:'agnaldo@hurricanecolors.com.br',pasta_id:'1o50iWBABqyItyZhX2R2Kc6hCzLnxFIp2'},
+    {nome:'Wendel', email:'santosrwendel@gmail.com',  pasta_id:'1Yfyc7TD_fI1LjQxHhscfDy8kxOiBxkA9'},
+  ],
+  cronograma:[
+    {data:'11/04',titulo:'Saída de Maringá',subtitulo:'Voo MGF → GRU',descricao:'Saída às 16h35. Reunião do grupo em Guarulhos para check-in conjunto.',horario:'16:35',local:'Aeroporto de Maringá',local_chines:'',tipo:'viagem'},
+    {data:'11/04',titulo:'Sala VIP — GRU',subtitulo:'Plaza Premium Lounge T2',descricao:'Sala VIP no Terminal 2. Embarque internacional às 01h45.',horario:'22:00',local:'GRU Terminal 2',local_chines:'',tipo:'viagem'},
+    {data:'13/04',titulo:'Chegada em Hong Kong',subtitulo:'HKG → Guangzhou',descricao:'Chegada 14h55. Transfer para Guangzhou. Check-in a partir das 19h.',horario:'14:55',local:'HKG → Guangzhou',local_chines:'广州',tipo:'viagem'},
+    {data:'13/04',titulo:'Check-in Dong Fang Hotel',subtitulo:'Reserva confirmada',descricao:'Hotel com transfer gratuito diário para a Feira. Concierge 24h.',horario:'19:00',local:'Dong Fang Hotel',local_chines:'东方宾馆',tipo:'hotel'},
+    {data:'13/04',titulo:'Jantar de Boas-Vindas',subtitulo:'Guangzhou Restaurant',descricao:'Primeiro jantar em grupo. Culinária cantonesa tradicional.',horario:'20:00',local:'Guangzhou Restaurant',local_chines:'广州酒家',tipo:'alimentacao'},
+    {data:'14/04',titulo:'Retirada de Crachá',subtitulo:'Canton Fair — Credenciamento',descricao:'Levar passaporte original + certificado de inscrição. 9h–17h.',horario:'09:00',local:'Canton Fair Complex',local_chines:'广交会展馆',tipo:'feira'},
+    {data:'14/04',titulo:'Wanguo Outlets / Yima',subtitulo:'Tarde livre — shoppings',descricao:'Shoppings de moda atacadista próximos ao hotel.',horario:'14:00',local:'Wanguo / Yima',local_chines:'万国奥特莱斯',tipo:'visita'},
+    {data:'15/04',titulo:'1º Dia de Feira',subtitulo:'Fase 1 — Halls 1-8',descricao:'Eletrônicos, materiais de construção, ferragens. Transfer 8h30.',horario:'09:00',local:'Canton Fair Complex',local_chines:'广交会展馆',tipo:'feira'},
+    {data:'16/04',titulo:'2º Dia de Feira',subtitulo:'Fase 1 — Continuação',descricao:'Aprofundar contatos. Coletar catálogos e amostras.',horario:'09:00',local:'Canton Fair Complex',local_chines:'广交会展馆',tipo:'feira'},
+    {data:'17/04',titulo:'3º Dia de Feira',subtitulo:'Fase 1 — Último dia',descricao:'Consolidar contatos. Definir agenda de fábricas.',horario:'09:00',local:'Canton Fair Complex',local_chines:'广交会展馆',tipo:'feira'},
+    {data:'18/04',titulo:'🌟 Dia Livre',subtitulo:'Mercados de réplicas',descricao:'Tarde: Baiyun Leather City + Zhanxi Road. Noite: jantar Tao Tao Ju.',horario:'14:00',local:'Baiyun / Zhanxi Road',local_chines:'白云皮具城 / 站西路',tipo:'visita'},
+    {data:'18/04',titulo:'Jantar em Grupo',subtitulo:'Tao Tao Ju ⭐ Michelin',descricao:'Fundado em 1880. Reserva obrigatória para 8 pessoas.',horario:'19:30',local:'Tao Tao Ju',local_chines:'陶陶居',tipo:'alimentacao'},
+    {data:'19/04',titulo:'Domingo — Amostras',subtitulo:'Feira até 14h + Tarde Livre',descricao:'Retirar amostras. Tarde: eletrônicos ou roupas.',horario:'09:00',local:'Canton Fair Complex',local_chines:'广交会展馆',tipo:'feira'},
+    {data:'20/04',titulo:'Visitas / Fábricas — Dia 1',subtitulo:'Grupo A: Foshan | Grupo B: Onelink',descricao:'A: Foshan Huayi (materiais). B: Onelink Plaza (marketplace).',horario:'09:00',local:'Foshan / Onelink Plaza',local_chines:'华艺建材市场 / 万菱广场',tipo:'visita'},
+    {data:'21/04',titulo:'Visitas / Fábricas — Dia 2',subtitulo:'Setor químico + follow-ups',descricao:'Químico: Guangzhou Hengfeng. Demais: reuniões de follow-up.',horario:'09:00',local:'Huangpu / Guangzhou',local_chines:'黄埔区',tipo:'visita'},
+    {data:'22/04',titulo:'Último Dia de Reuniões',subtitulo:'Encerrar negociações',descricao:'Manhã: negociações. Noite: jantar BingSheng Mansion.',horario:'09:00',local:'Guangzhou',local_chines:'广州',tipo:'visita'},
+    {data:'22/04',titulo:'🎉 Jantar de Encerramento',subtitulo:'BingSheng Mansion ⭐⭐ Michelin',descricao:'Melhor restaurante cantonês. Sala privativa. Reserva obrigatória.',horario:'19:30',local:'BingSheng Mansion',local_chines:'炳胜品味',tipo:'alimentacao'},
+    {data:'23/04',titulo:'Shangxiajiu',subtitulo:'Compras + Gastronomia',descricao:'1,2km de lojas, lanches e arquitetura Lingnan.',horario:'10:00',local:'Shangxiajiu Pedestrian St.',local_chines:'上下九步行街',tipo:'visita'},
+    {data:'27/04',titulo:'CHECK-OUT → Hong Kong',subtitulo:'Guangzhou → HKG → Retorno',descricao:'Check-out às 10h. Transfer para HKG. Voo de retorno à meia-noite.',horario:'10:00',local:'Dong Fang Hotel → HKG',local_chines:'东方宾馆 → 香港',tipo:'viagem'},
+  ],
+  restaurantes:[
+    {nome:'Guangzhou Restaurant',tipo:'tradicional',descricao:'Clássico desde 1935. Ambiente elegante com pátio de lanternas.',especialidade:'Wenchang Chicken, Leitão Assado, Dim Sum',preco:'CNY 150–180/pessoa',reserva:'Recomendado',endereco:'Wenchang South Rd, Shangxiajiu',endereco_chines:'广州酒家 文昌路'},
+    {nome:'Tao Tao Ju',tipo:'michelin',descricao:'Fundado em 1880. Guia Michelin. Referência de autenticidade cantonesa.',especialidade:'Har Gow, Chicken Feet, Char Siu',preco:'CNY 150–250/pessoa',reserva:'Obrigatório',endereco:'20 Dishifu Rd, Shangxiajiu',endereco_chines:'陶陶居 第十甫路20号'},
+    {nome:'BingSheng Mansion',tipo:'michelin',descricao:'2 estrelas Michelin. Sala privativa para grupos.',especialidade:'Black Char Siu, Roast Goose, Seafood',preco:'CNY 400–600/pessoa',reserva:'Obrigatório com antecedência',endereco:'Xicun Road 2, Zhujiang New Town',endereco_chines:'炳胜品味 珠江新城冼村路2号'},
+    {nome:'Dian Dou De',tipo:'tradicional',descricao:'Cardápio com fotos. Fácil pedir sem inglês. Excelente custo-benefício.',especialidade:'Dim Sum variado, Siu Mai, Rice Sausage',preco:'CNY 60–100/pessoa',reserva:'Não necessário',endereco:'Múltiplas unidades',endereco_chines:'点都德'},
+    {nome:'Pan Xi Restaurant',tipo:'tradicional',descricao:'Morning tea em jardim com barcos flutuantes no lago.',especialidade:'Morning Tea, White Rabbit Dumpling',preco:'CNY 80–120/pessoa',reserva:'Recomendado para grupos',endereco:'151 Longjin West Rd, Liwan',endereco_chines:'泮溪酒家 龙津西路151号'},
+    {nome:'Restaurante Latino',tipo:'latin',descricao:'Para dias com saudade de casa. Muito frequentado por brasileiros.',especialidade:'Frango, Arroz, Feijão, Churrasco',preco:'CNY 80–150/pessoa',reserva:'Recomendado',endereco:'Hua Le Lu / próx. Feira',endereco_chines:'拉丁餐厅 荣建大厦'},
+  ],
+  dicas:[
+    {categoria:'🧳 Bagagem',icon:'✅',titulo:'O que levar',texto:'Adaptador universal (tipo A e I), roupas leves (28–32°C úmido em abril), calçado confortável, capa de chuva, power bank, cartão de visita da empresa.'},
+    {categoria:'🧳 Bagagem',icon:'❌',titulo:'O que NÃO levar',texto:'Roupas pesadas (você vai comprar lá), aerossóis na bagagem de mão. Leve uma mala vazia extra para amostras e compras.'},
+    {categoria:'🧳 Bagagem',icon:'📦',titulo:'Amostras da Feira',texto:'Fornecedores enviam amostras ao Brasil via courier. Pergunte: "Can you send samples to Brazil?" Avalie peso e alfândega antes.'},
+    {categoria:'💰 Dinheiro e Pagamento',icon:'📱',titulo:'Alipay (principal)',texto:'Cartão Wise já vinculado. Use em tudo — mercados, restaurantes, transporte. Mantenha saldo no Wise.'},
+    {categoria:'💰 Dinheiro e Pagamento',icon:'💵',titulo:'Yuan em espécie',texto:'Leve CNY 500–1000 para réplicas e barracas. Câmbio em Hong Kong é melhor do que no Brasil.'},
+    {categoria:'💰 Dinheiro e Pagamento',icon:'💱',titulo:'Câmbio',texto:'USD 1 ≈ CNY 7,2 (verifique no dia). Não aceite câmbio na rua. Use o app XE Currency.'},
+    {categoria:'📡 Comunicação',icon:'📶',titulo:'Chip Omeuchip',texto:'Chip incluso no pacote. Funciona na China sem VPN. Ativação automática. Não precisa configurar nada.'},
+    {categoria:'📡 Comunicação',icon:'🗣️',titulo:'Google Translate',texto:'Instale o pacote OFFLINE do Chinês antes de embarcar. A câmera traduz cardápios e placas.'},
+    {categoria:'🤝 Negócios e Feira',icon:'🎫',titulo:'Crachá da Canton Fair',texto:'Retirar dia 14/04. Levar passaporte + certificado de inscrição impresso. Acesso todos os halls.'},
+    {categoria:'🤝 Negócios e Feira',icon:'📋',titulo:'Negociações',texto:'Sempre pergunte: MOQ, preço FOB, prazo e se fazem OEM/private label. Tire fotos e colete cartões.'},
+    {categoria:'🤝 Negócios e Feira',icon:'💼',titulo:'Cartão de visita',texto:'Troque com as duas mãos — respeito na China. Leve ao menos 30 cartões.'},
+    {categoria:'🌏 Costumes',icon:'🍽️',titulo:'No restaurante',texto:'Compartilhar pratos é normal. Não espete hashis no arroz (símbolo funerário). Chame garçom: 服务员 (fú wù yuán).'},
+    {categoria:'🌏 Costumes',icon:'🚗',titulo:'Deslocamento',texto:'Use Didi (app). Metrô excelente e barato. Mostre endereço EM CHINÊS no celular para taxistas.'},
+    {categoria:'🏥 Saúde',icon:'💊',titulo:'Medicamentos',texto:'Leve: dipirona, antidiarreico, protetor solar FPS 50+, repelente. Farmácias locais têm nomes diferentes.'},
+    {categoria:'🏥 Saúde',icon:'🌡️',titulo:'Clima em Abril',texto:'22–32°C, umidade alta, chuvas leves. Roupas leves de algodão. Jaqueta fina para o ar-condicionado.'},
+    {categoria:'🏥 Saúde',icon:'🚿',titulo:'Água',texto:'NUNCA beba água da torneira. Apenas água mineral engarrafada. O hotel fornece garrafinhas diariamente.'},
+    {categoria:'🚨 Emergências',icon:'🆘',titulo:'Números',texto:'Polícia: 110 | Ambulância: 120 | Bombeiros: 119. Hotel Dong Fang: concierge 24h com tradução.'},
+    {categoria:'🚨 Emergências',icon:'🇧🇷',titulo:'Consulado Brasileiro',texto:'Guangzhou: +86 20 8770-0101. Embaixada Pequim: +86 10 6533-2244.'},
+  ],
+  contatos:[
+    {nome:'Lucas Froemming',funcao:'👑 Organizador da viagem',telefone:'+55 44 9 XXXX-XXXX',wpp:'https://wa.me/5544XXXXXXXXX'},
+    {nome:'Dong Fang Hotel',funcao:'🏨 Recepção 24h',telefone:'+86 20 8666-9900',wpp:''},
+    {nome:'Emergência China',funcao:'🚨 Polícia / Ambulância',telefone:'110 / 120',wpp:''},
+    {nome:'Consulado Brasileiro GZ',funcao:'🇧🇷 Assistência consular',telefone:'+86 20 8770-0101',wpp:''},
+    {nome:'Canton Fair Complex',funcao:'🎪 Informações da Feira',telefone:'+86 20 2606-6688',wpp:''},
+    {nome:'Seguro Viagem',funcao:'🏥 Central de assistência',telefone:'INSERIR NÚMERO',wpp:''},
+  ],
+  apps:[
+    {icon:'💚',nome:'WhatsApp',desc:'Comunicação do grupo. Crie o grupo antes de embarcar.',obrigatorio:'sim',icone_url:''},
+    {icon:'🔵',nome:'WeChat',desc:'Pagamentos e contato com fornecedores chineses.',obrigatorio:'sim',icone_url:''},
+    {icon:'🟡',nome:'Alipay',desc:'Pagamento universal. Cartão Wise já vinculado.',obrigatorio:'sim',icone_url:''},
+    {icon:'🗺️',nome:'Google Translate',desc:'Baixe o pacote Chinês offline. Câmera traduz menus.',obrigatorio:'sim',icone_url:''},
+    {icon:'📍',nome:'Maps.me',desc:'Mapa offline de Guangzhou. Funciona sem internet.',obrigatorio:'sim',icone_url:''},
+    {icon:'🚗',nome:'Didi',desc:'Uber chinês. Aceita Alipay. Essencial para deslocamentos.',obrigatorio:'sim',icone_url:''},
+    {icon:'💱',nome:'XE Currency',desc:'Conversor CNY/BRL/USD em tempo real.',obrigatorio:'não',icone_url:''},
+    {icon:'🗺️',nome:'Wanderlog',desc:'Mapa completo do roteiro.',obrigatorio:'não',icone_url:''},
+  ],
+  fotos:[],
+};
+
+// ═══════════════════════════════════════════════
+//  ESTADO
+// ═══════════════════════════════════════════════
+let D = null;
+let currentUser = null;
+let activeDay = null;
+let cronView = 'lista';
+let calYear = 2026, calMonth = 3; // Abril = 3 (0-indexed)
+let calActiveDate = null;
+
+const CACHE_KEY='cf26_cache', CACHE_TS='cf26_ts', THEME_KEY='cf26_theme';
+
+// ═══════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════
+async function init() {
+  const t = localStorage.getItem(THEME_KEY) || 'dark';
+  setTheme(t);
+  D = loadCache() || DEFAULTS;
+  renderAll();
+  if (CFG.SHEET_ID && CFG.SHEET_ID !== 'COLE_SEU_SHEET_ID_AQUI') {
+    await syncData(true);
+  } else {
+    setSyncState('idle','Offline');
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  SYNC
+// ═══════════════════════════════════════════════
+async function syncData(silent=false) {
+  if (!CFG.SHEET_ID || CFG.SHEET_ID==='COLE_SEU_SHEET_ID_AQUI') {
+    if(!silent) showToast('Configure o SHEET_ID');
+    return;
+  }
+  setSyncState('loading','Sincronizando...');
+  try {
+    const ft = async(name) => {
+      const url=`https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(name)}`;
+      const r=await fetch(url); const txt=await r.text();
+      const m=txt.match(/setResponse\(([\s\S]*)\);$/);
+      if(!m) return null;
+      return parseGViz(JSON.parse(m[1]).table);
+    };
+    const [cr,re,di,co,ap,av,me,fo,cf]=await Promise.all([
+      ft(CFG.TABS.cronograma),ft(CFG.TABS.restaurantes),ft(CFG.TABS.dicas),
+      ft(CFG.TABS.contatos),ft(CFG.TABS.apps),ft(CFG.TABS.avisos),
+      ft(CFG.TABS.membros),ft(CFG.TABS.fotos),ft(CFG.TABS.config),
+    ]);
+    D={
+      cronograma:cr||DEFAULTS.cronograma, restaurantes:re||DEFAULTS.restaurantes,
+      dicas:di||DEFAULTS.dicas, contatos:co||DEFAULTS.contatos,
+      apps:ap||DEFAULTS.apps, avisos:av||[],
+      membros:me||DEFAULTS.membros, fotos:fo||DEFAULTS.fotos,
+      config:cf?.[0]||DEFAULTS.config,
+    };
+    saveCache(D); renderAll();
+    setSyncState('ok','Atualizado');
+    const ts=new Date().toLocaleString('pt-BR');
+    document.getElementById('lastSync').textContent=ts;
+    localStorage.setItem('cf26_lastsync',ts);
+    if(!silent) showToast('✅ Dados atualizados!');
+  } catch(e) {
+    console.error(e); setSyncState('error','Erro');
+    if(!silent) showToast('❌ Falha ao sincronizar.');
+  }
+}
+
+function parseGViz(table) {
+  if(!table?.cols?.length) return [];
+  const h=table.cols.map(c=>(c.label||'').toLowerCase().trim().replace(/\s+/g,'_'));
+  return (table.rows||[]).filter(r=>r.c?.some(c=>c?.v!=null&&c.v!=='')).map(row=>{
+    const o={}; h.forEach((k,i)=>{o[k]=row.c?.[i]?.v??row.c?.[i]?.f??'';}); return o;
+  });
+}
+
+function saveCache(d){try{localStorage.setItem(CACHE_KEY,JSON.stringify(d));localStorage.setItem(CACHE_TS,Date.now())}catch(e){}}
+function loadCache(){
+  try{
+    const ts=+localStorage.getItem(CACHE_TS);
+    if(!ts||(Date.now()-ts)/3.6e6>CFG.CACHE_HOURS) return null;
+    const r=localStorage.getItem(CACHE_KEY);
+    return r?JSON.parse(r):null;
+  }catch(e){return null;}
+}
+
+// ═══════════════════════════════════════════════
+//  TEMA
+// ═══════════════════════════════════════════════
+function toggleTheme(){
+  setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+}
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  localStorage.setItem(THEME_KEY,t);
+  const btn=document.getElementById('themeBtn');
+  if(btn) btn.textContent=t==='dark'?'🌙':'☀️';
+}
+
+// ═══════════════════════════════════════════════
+//  GOOGLE LOGIN
+// ═══════════════════════════════════════════════
+function onGoogleLogin(response){
+  const p=JSON.parse(atob(response.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+  currentUser={name:p.name,email:p.email,picture:p.picture};
+  const pill=document.getElementById('userPill');
+  document.getElementById('userAvatar').src=currentUser.picture||'';
+  document.getElementById('userName').textContent=currentUser.name?.split(' ')[0]||'';
+  pill.classList.add('show');
+  renderPersonalDrive();
+}
+
+// ═══════════════════════════════════════════════
+//  RENDER ALL
+// ═══════════════════════════════════════════════
+function renderAll(){
+  renderAviso(); renderCronograma(); renderRestaurantes();
+  renderDicas(); renderContatos(); renderGaleria();
+  renderArquivos(); renderApps();
+  const ts=localStorage.getItem('cf26_lastsync');
+  if(ts) document.getElementById('lastSync').textContent=ts;
+}
+
+// AVISO
+function renderAviso(){
+  const cfg=D.config||{};
+  const banner=document.getElementById('alertBanner');
+  if((cfg.aviso_ativo==='sim'||cfg.aviso_ativo===true)&&cfg.titulo_aviso){
+    banner.classList.add('show');
+    document.getElementById('alertTitle').textContent=cfg.titulo_aviso;
+    document.getElementById('alertText').textContent=cfg.texto_aviso;
+  } else banner.classList.remove('show');
+}
+
+// ═══════════════════════════════════════════════
+//  CRONOGRAMA — LISTA
+// ═══════════════════════════════════════════════
+function renderCronograma(){
+  const byDate={};
+  (D.cronograma||[]).forEach(r=>{const d=r.data||'Sem data';if(!byDate[d])byDate[d]=[];byDate[d].push(r);});
+  const dates=Object.keys(byDate);
+  if(!dates.length) return;
+  if(!activeDay||!byDate[activeDay]) activeDay=dates[0];
+
+  // Chips
+  const scroller=document.getElementById('dayScroller');
+  scroller.innerHTML=dates.map(d=>{
+    const[dia,mes]=d.split('/');
+    const mA=['','Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    const items=byDate[d];
+    const tag=items.some(x=>x.tipo==='feira')?'Feira':items.some(x=>x.tipo==='viagem')?'Voo':'';
+    return `<div class="day-chip${d===activeDay?' active':''}" onclick="selectDay('${d}')">
+      <span class="chip-num">${dia}</span>
+      <span class="chip-mes">${mA[+mes]}</span>
+      ${tag?`<span class="chip-tag">${tag}</span>`:''}
+    </div>`;
+  }).join('');
+
+  // Blocos
+  document.getElementById('dayBlocks').innerHTML=dates.map(d=>{
+    const items=byDate[d];
+    const sub=items[0]?.subtitulo||items[0]?.titulo||'';
+    return `<div class="dia-block${d===activeDay?' active':''}" id="db_${d.replace('/','_')}">
+      <div class="dia-label-card"><h3>${fmtDate(d)}</h3><p>${sub}</p></div>
+      <div class="tl">${items.map((it,i)=>tlItem(it,i)).join('')}</div>
+    </div>`;
+  }).join('');
+
+  // Calendário
+  renderCal();
+}
+
+function tlItem(it,idx){
+  const icos={viagem:'✈️',feira:'🏪',alimentacao:'🍽️',visita:'🛍️',hotel:'🏨',livre:'🌟'};
+  const ico=icos[it.tipo]||'📍';
+  const chBtn=it.local_chines?`<button class="copy-btn" onclick="copyText('${it.local_chines}',this)">📋 Copiar em chinês</button>`:'';
+  return `<div class="tl-item" style="animation-delay:${idx*.05}s">
+    <div class="tl-dot ${it.tipo||'livre'}">${ico}</div>
+    <div class="tl-card">
+      <div class="tl-top">
+        <div class="tl-title">${it.titulo||''}</div>
+        ${it.horario?`<div class="tl-time">${it.horario}</div>`:''}
+      </div>
+      ${it.descricao?`<div class="tl-desc">${it.descricao}</div>`:''}
+      ${it.local?`<div class="tl-loc">📍 <span>${it.local}</span>${it.local_chines?`<span class="chinese-badge">${it.local_chines}</span>`:''}</div>`:''}
+      ${chBtn}
+    </div>
+  </div>`;
+}
+
+function selectDay(d){
+  activeDay=d;
+  document.querySelectorAll('.day-chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.dia-block').forEach(c=>c.classList.remove('active'));
+  document.querySelector(`.day-chip[onclick="selectDay('${d}')"]`)?.classList.add('active');
+  document.getElementById(`db_${d.replace('/','_')}`)?.classList.add('active');
+}
+
+// ═══════════════════════════════════════════════
+//  CRONOGRAMA — CALENDÁRIO MENSAL
+// ═══════════════════════════════════════════════
+function setView(v){
+  cronView=v;
+  document.getElementById('viewLista').style.display=v==='lista'?'block':'none';
+  document.getElementById('viewCal').style.display=v==='calendario'?'block':'none';
+  document.getElementById('btnLista').classList.toggle('active',v==='lista');
+  document.getElementById('btnCal').classList.toggle('active',v==='calendario');
+  if(v==='calendario') renderCal();
+}
+
+function renderCal(){
+  const meses=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  document.getElementById('calMonthLabel').textContent=`${meses[calMonth]} ${calYear}`;
+
+  // Mapear eventos por data
+  const byDate={};
+  (D.cronograma||[]).forEach(r=>{
+    if(!r.data) return;
+    const[dd,mm]=r.data.split('/');
+    const key=`${calYear}-${mm.padStart(2,'0')}-${dd.padStart(2,'0')}`;
+    if(!byDate[key]) byDate[key]=[];
+    byDate[key].push(r);
+  });
+
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  const dows=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+
+  let html=dows.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+
+  // Dias em branco antes do 1º
+  for(let i=0;i<firstDay;i++) html+=`<div class="cal-day empty"></div>`;
+
+  for(let d=1;d<=daysInMonth;d++){
+    const mm=String(calMonth+1).padStart(2,'0');
+    const dd=String(d).padStart(2,'0');
+    const key=`${calYear}-${mm}-${dd}`;
+    const evts=byDate[key]||[];
+    const isActive=calActiveDate===key;
+    const hasEvts=evts.length>0;
+    const dotHtml=evts.slice(0,4).map(e=>`<span class="cal-dot ${e.tipo||'livre'}"></span>`).join('');
+    html+=`<div class="cal-day${hasEvts?' has-events':''}${isActive?' active-day':''}" onclick="selectCalDay('${key}','${d}/${mm}')">
+      ${d}
+      ${hasEvts?`<div class="cal-dots">${dotHtml}</div>`:''}
+    </div>`;
+  }
+
+  document.getElementById('calGrid').innerHTML=html;
+
+  // Detalhe do dia selecionado
+  if(calActiveDate && byDate[calActiveDate]){
+    const items=byDate[calActiveDate];
+    const[,mm,dd]=calActiveDate.split('-');
+    document.getElementById('calDayDetail').innerHTML=`
+      <div class="cal-day-detail">
+        <h3>${fmtDate(`${dd}/${mm}`)}</h3>
+        <div class="tl">${items.map((it,i)=>tlItem(it,i)).join('')}</div>
+      </div>`;
+  } else {
+    document.getElementById('calDayDetail').innerHTML='';
+  }
+}
+
+function selectCalDay(key,dataBR){
+  calActiveDate=(calActiveDate===key?null:key);
+  renderCal();
+  if(calActiveDate){
+    setTimeout(()=>document.getElementById('calDayDetail')?.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+  }
+}
+
+function calPrev(){
+  calMonth--;
+  if(calMonth<0){calMonth=11;calYear--;}
+  calActiveDate=null;
+  renderCal();
+}
+function calNext(){
+  calMonth++;
+  if(calMonth>11){calMonth=0;calYear++;}
+  calActiveDate=null;
+  renderCal();
+}
+
+function fmtDate(d){
+  const[dia,mes]=d.split('/');
+  const m=['','Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const ds=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  try{const dt=new Date(`2026-${mes.padStart(2,'0')}-${dia.padStart(2,'0')}`);return `${ds[dt.getDay()]}, ${dia} de ${m[+mes]}`;}
+  catch(e){return d;}
+}
+
+// ═══════════════════════════════════════════════
+//  RESTAURANTES
+// ═══════════════════════════════════════════════
+function renderRestaurantes(){
+  const grid=document.getElementById('restGrid');
+  const list=D.restaurantes||[];
+  if(!list.length){grid.innerHTML='<div class="spinner-wrap">Sem restaurantes</div>';return;}
+  const bm={michelin:'badge-red',tradicional:'badge-gold',casual:'badge-green',latin:'badge-purple'};
+  const tl={michelin:'⭐ Michelin',tradicional:'🏯 Tradicional',casual:'🍜 Casual',latin:'🌎 Latino'};
+  grid.innerHTML=list.map(r=>`
+    <div class="rest-card">
+      <div class="rest-head">
+        <div><div class="rest-name">${r.nome}</div><div class="rest-sub">${r.especialidade||''}</div></div>
+        <span class="badge ${bm[r.tipo]||'badge-gold'}">${tl[r.tipo]||r.tipo||''}</span>
+      </div>
+      <div class="rest-body">
+        <div class="rest-row"><span class="rest-row-lbl">📝 Sobre</span><span class="rest-row-val">${r.descricao||'—'}</span></div>
+        <div class="rest-row"><span class="rest-row-lbl">💰 Preço</span><span class="rest-row-val">${r.preco||'—'}</span></div>
+        <div class="rest-row"><span class="rest-row-lbl">📞 Reserva</span><span class="rest-row-val">${r.reserva||'—'}</span></div>
+        <div class="rest-row"><span class="rest-row-lbl">📍 Local</span>
+          <div><span class="rest-row-val">${r.endereco||'—'}</span>
+          ${r.endereco_chines?`<br><span class="chinese-badge" style="display:inline-block;margin-top:5px">${r.endereco_chines}</span>
+          <button class="copy-btn" onclick="copyText('${r.endereco_chines}',this)">📋 Copiar</button>`:''}
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+//  DICAS
+// ═══════════════════════════════════════════════
+function renderDicas(){
+  const container=document.getElementById('dicaAcc');
+  const cats={};
+  (D.dicas||[]).forEach(r=>{const c=r.categoria||'Geral';if(!cats[c])cats[c]=[];cats[c].push(r);});
+  const catList=Object.entries(cats);
+  if(!catList.length){container.innerHTML='<p style="color:var(--text-dim)">Sem dicas</p>';return;}
+  container.innerHTML=catList.map(([cat,items],ci)=>{
+    const ico=cat.split(' ')[0];
+    const name=cat.replace(/^\S+\s/,'');
+    return `<div class="dica-block">
+      <div class="dica-head${ci===0?' open':''}" onclick="toggleDica(this)">
+        <div class="dica-head-left">
+          <span class="dica-head-icon">${ico}</span>
+          <span class="dica-head-name">${name||cat}</span>
+          <span class="dica-count">${items.length}</span>
+        </div>
+        <span class="dica-arrow">▾</span>
+      </div>
+      <div class="dica-body${ci===0?' open':''}">
+        ${items.map(it=>`<div class="dica-item">
+          <span class="dica-item-ico">${it.icon||'•'}</span>
+          <div><h4>${it.titulo||''}</h4><p>${it.texto||''}</p></div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+function toggleDica(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open')}
+
+// ═══════════════════════════════════════════════
+//  CONTATOS
+// ═══════════════════════════════════════════════
+function renderContatos(){
+  const list=document.getElementById('contList');
+  const items=D.contatos||[];
+  if(!items.length){list.innerHTML='<div class="spinner-wrap">Sem contatos</div>';return;}
+  list.innerHTML=items.map(c=>`
+    <div class="cont-card">
+      <div class="cont-info">
+        <div class="cont-nome">${c.nome}</div>
+        <div class="cont-funcao">${c.funcao||''}</div>
+        <div class="cont-tel">${c.telefone||''}</div>
+      </div>
+      <div class="cont-btns">
+        ${c.telefone&&!c.telefone.includes('INSERIR')?`<a class="icon-btn" href="tel:${c.telefone.replace(/\s/g,'')}" title="Ligar">📞</a>`:''}
+        ${c.wpp?`<a class="icon-btn wpp" href="${c.wpp}" target="_blank" title="WhatsApp">💬</a>`:''}
+      </div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+//  GALERIA — 2 colunas com link para original
+// ═══════════════════════════════════════════════
+function renderGaleria(){
+  const container=document.getElementById('photoContainer');
+  const fotos=D.fotos||[];
+  if(!fotos.length){
+    container.innerHTML=`<div class="photo-empty">
+      <span class="photo-empty-icon">📸</span>
+      <p>As fotos da viagem aparecerão aqui.<br>
+      <small>Lucas adicionará as imagens durante a viagem via Google Sheets (aba Fotos).</small></p>
+    </div>`;
+    return;
+  }
+  const byDate={};
+  fotos.forEach(f=>{const d=f.data||'Sem data';if(!byDate[d])byDate[d]=[];byDate[d].push(f);});
+
+  container.innerHTML=Object.entries(byDate).map(([d,imgs])=>`
+    <div class="photo-day-group">
+      <div class="photo-day-label">${fmtDate(d)}</div>
+      <div class="photo-grid">
+        ${imgs.map(img=>{
+          // URL para o arquivo original no Drive
+          const originalUrl = img.url_original || img.url || '#';
+          return `<a class="photo-card" href="${originalUrl}" target="_blank" rel="noopener">
+            <img src="${img.url||''}" alt="${esc(img.descricao||'')}" loading="lazy"
+              onerror="this.parentElement.style.display='none'">
+            <div class="photo-card-info">
+              <div class="photo-card-desc">${img.descricao||''}</div>
+              <div class="photo-card-meta">${img.autor||''}</div>
+            </div>
+          </a>`;
+        }).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+//  ARQUIVOS
+// ═══════════════════════════════════════════════
+function renderArquivos(){
+  const cfg=D.config||{};
+  const url=cfg.shared_drive_url||CFG.SHARED_DRIVE_URL;
+  const btn=document.getElementById('sharedDriveBtn');
+  if(btn&&url) btn.href=url;
+  renderPersonalDrive();
+}
+
+function renderPersonalDrive(){
+  const area=document.getElementById('personalDriveArea');
+  if(!area) return;
+  if(!currentUser){
+    area.innerHTML=`<div class="drive-locked">
+      <span class="drive-locked-icon">🔒</span>
+      <p style="margin-bottom:16px;font-size:var(--fs-base)">Faça login com sua conta Google para acessar sua pasta pessoal.</p>
+      <div id="googleLoginBtn"></div>
+    </div>`;
+    if(window.google?.accounts?.id){
+      google.accounts.id.initialize({client_id:CFG.GOOGLE_CLIENT_ID,callback:onGoogleLogin});
+      google.accounts.id.renderButton(document.getElementById('googleLoginBtn'),{
+        theme:document.documentElement.getAttribute('data-theme')==='dark'?'filled_black':'outline',
+        size:'large',shape:'pill',text:'signin_with',
+      });
+    }
+    return;
+  }
+  const membros=D.membros||DEFAULTS.membros;
+  const membro=membros.find(m=>(m.email||'').toLowerCase()===currentUser.email.toLowerCase());
+  if(membro&&membro.pasta_id&&!membro.pasta_id.startsWith('ID_PASTA')&&!membro.pasta_id.startsWith('COLE')){
+    area.innerHTML=`<a class="drive-btn" href="https://drive.google.com/drive/folders/${membro.pasta_id}" target="_blank">
+      <div class="drive-btn-icon personal">👤</div>
+      <div class="drive-btn-text">
+        <strong>Meus Arquivos — ${membro.nome}</strong>
+        <span>Passagem, seguro, credencial, documentos pessoais</span>
+      </div>
+      <div class="drive-btn-arrow">→</div>
+    </a>`;
+  } else {
+    area.innerHTML=`<div class="drive-locked">
+      <span class="drive-locked-icon">📭</span>
+      <p>Olá, <strong>${currentUser.name}</strong>!<br>Sua pasta está sendo configurada.<br>
+      <small style="color:var(--text-dim)">Fale com Lucas para verificar.</small></p>
+    </div>`;
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  APPS — com ícones reais
+// ═══════════════════════════════════════════════
+function renderApps(){
+  const grid=document.getElementById('appsGrid');
+  const list=D.apps||[];
+  if(!list.length){grid.innerHTML='';return;}
+  grid.innerHTML=list.map(a=>{
+    // Prioridade: icone_url da planilha > APP_ICONS padrão > emoji
+    const imgUrl = a.icone_url || APP_ICONS[a.nome] || '';
+    const iconHtml = imgUrl
+      ? `<div class="app-icon-wrap"><img src="${imgUrl}" alt="${a.nome}" onerror="this.parentElement.innerHTML='${a.icon||'📱'}'"></div>`
+      : `<div class="app-icon-wrap" style="font-size:1.8rem">${a.icon||'📱'}</div>`;
+    return `<div class="app-card">
+      ${iconHtml}
+      <div class="app-name">${a.nome}</div>
+      <div class="app-desc">${a.desc||''}</div>
+      ${(a.obrigatorio==='sim'||a.obrigatorio===true)?'<span class="app-obr">✅ Obrigatório</span>':''}
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════
+//  TABS
+// ═══════════════════════════════════════════════
+document.getElementById('tabsBar').addEventListener('click',e=>{
+  const tab=e.target.closest('.tab');
+  if(!tab) return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  tab.classList.add('active');
+  const name=tab.dataset.tab;
+  document.getElementById('sec-'+name)?.classList.add('active');
+  if(name==='galeria') renderGaleria();
+  if(name==='arquivos') renderArquivos();
+});
+
+// ═══════════════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════════════
+function copyText(text,btn){
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig=btn.textContent;
+    btn.textContent='✅ Copiado!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied')},2000);
+    showToast('Copiado! Cole no Didi ou para o taxista.');
+  }).catch(()=>showToast('Copie: '+text));
+}
+function setSyncState(state,label){
+  const dot=document.getElementById('syncDot');
+  const lbl=document.getElementById('syncLabel');
+  dot.className='sync-dot'+(state==='loading'?' loading':state==='error'?' error':'');
+  lbl.textContent=label;
+}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+function esc(s){return String(s).replace(/'/g,"&#39;").replace(/"/g,'&quot;')}
+
+init();
+</script>
+</body>
+</html>
