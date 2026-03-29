@@ -1537,6 +1537,31 @@ function renderContatos(){
 // ═══════════════════════════════════════════════
 //  GALERIA — 2 colunas com link para original
 // ═══════════════════════════════════════════════
+function driveThumb(url) {
+  // Converte qualquer link do Drive para thumbnail que funciona inline
+  if(!url) return '';
+  let id = '';
+  // Formato: /file/d/ID/view ou uc?id=ID ou /open?id=ID
+  const m1 = url.match(/\/file\/d\/([^\/\?]+)/);
+  const m2 = url.match(/[?&]id=([^&]+)/);
+  if(m1) id = m1[1];
+  else if(m2) id = m2[1];
+  if(id) return `https://drive.google.com/thumbnail?id=${id}&sz=w600`;
+  return url; // fallback
+}
+
+function driveOriginal(url) {
+  // Link para abrir o arquivo original no Drive
+  if(!url) return '#';
+  const m1 = url.match(/\/file\/d\/([^\/\?]+)/);
+  const m2 = url.match(/[?&]id=([^&]+)/);
+  let id = '';
+  if(m1) id = m1[1];
+  else if(m2) id = m2[1];
+  if(id) return `https://drive.google.com/file/d/${id}/view`;
+  return url;
+}
+
 function renderGaleria(){
   const container=document.getElementById('photoContainer');
   const fotos=D.fotos||[];
@@ -1556,14 +1581,14 @@ function renderGaleria(){
       <div class="photo-day-label">${fmtDate(d)}</div>
       <div class="photo-grid">
         ${imgs.map(img=>{
-          // URL para o arquivo original no Drive
-          const originalUrl = img.url_original || img.url || '#';
-          return `<a class="photo-card" href="${originalUrl}" target="_blank" rel="noopener">
-            <img src="${img.url||''}" alt="${esc(img.descricao||'')}" loading="lazy"
-              onerror="this.parentElement.style.display='none'">
+          const thumb   = driveThumb(img.url||'');
+          const original= driveOriginal(img.url||'');
+          return `<a class="photo-card" href="${original}" target="_blank" rel="noopener">
+            <img src="${thumb}" alt="${esc(img.descricao||'')}" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div style=\'padding:20px;text-align:center;color:var(--text-dim);font-size:0.8rem\'>📷 Foto indisponível</div>'">
             <div class="photo-card-info">
               <div class="photo-card-desc">${img.descricao||''}</div>
-              <div class="photo-card-meta">${img.autor||''}</div>
+              <div class="photo-card-meta">${img.autor||''} ${img.data?'· '+img.data:''}</div>
             </div>
           </a>`;
         }).join('')}
