@@ -1088,11 +1088,15 @@ async function syncData(silent=false) {
   setSyncState('loading','Sincronizando...');
   try {
     const ft = async(name) => {
-      const url=`https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(name)}`;
+      const url=`https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/gviz/tq?tqx=out:json&headers=1&sheet=${encodeURIComponent(name)}`;
       const r=await fetch(url); const txt=await r.text();
-      const m=txt.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
-      if(!m) return null;
-      return parseGViz(JSON.parse(m[1]).table);
+      // Extrai o JSON do wrapper JSONP do Google
+      const start = txt.indexOf('{');
+      const end   = txt.lastIndexOf('}');
+      if(start===-1||end===-1) return null;
+      let json;
+      try { json = JSON.parse(txt.slice(start, end+1)); } catch(e) { console.error('parse err',e); return null; }
+      return parseGViz(json.table);
     };
     const [cr,re,di,co,ap,av,me,fo,cf]=await Promise.all([
       ft(CFG.TABS.cronograma),ft(CFG.TABS.restaurantes),ft(CFG.TABS.dicas),
@@ -1128,27 +1132,46 @@ function parseGViz(table) {
       const cell = row.c?.[i];
       if(!cell||cell.v==null){ o[k]=''; return; }
       const t = types[i];
-      // Horário vem como decimal (ex: 16:35 → 0.6909...)
+
+      // HORÁRIO — GSheets retorna array [H, M, S, ms] ou decimal
       if(t==='timeofday'||t==='time'){
-        const arr=cell.v; // [H, M, S, ms]
-        if(Array.isArray(arr)){
-          o[k]=String(arr[0]).padStart(2,'0')+':'+String(arr[1]).padStart(2,'0');
+        if(Array.isArray(cell.v)){
+          o[k]=String(cell.v[0]).padStart(2,'0')+':'+String(cell.v[1]).padStart(2,'0');
         } else if(typeof cell.v==='number'){
           const tot=Math.round(cell.v*1440);
           o[k]=String(Math.floor(tot/60)).padStart(2,'0')+':'+String(tot%60).padStart(2,'0');
-        } else { o[k]=cell.f||cell.v||''; }
+        } else { o[k]=cell.f||String(cell.v)||''; }
         return;
       }
-      // Data vem como objeto Date ou string "Date(...)"
+
+      // DATA — GSheets retorna Date(ano,mes,dia) — converter para DD/MM
       if(t==='date'||t==='datetime'){
-        o[k]=cell.f||String(cell.v)||''; return;
+        // cell.v vem como "Date(2026,3,11)" onde mês é 0-indexed
+        if(typeof cell.v==='string'&&cell.v.startsWith('Date(')){
+          const parts=cell.v.replace('Date(','').replace(')','').split(',').map(Number);
+          const dia=String(parts[2]).padStart(2,'0');
+          const mes=String(parts[1]+1).padStart(2,'0'); // +1 porque 0-indexed
+          o[k]=`${dia}/${mes}`;
+        } else {
+          // Fallback: usa o valor formatado da célula
+          o[k]=cell.f||String(cell.v)||'';
+          // Se o formato for DD/MM/AAAA, pega só DD/MM
+          if(o[k].match(/\d{2}\/\d{2}\/\d{4}/)) o[k]=o[k].slice(0,5);
+        }
+        return;
       }
-      // Boolean
+
+      // BOOLEAN
       if(t==='boolean'){ o[k]=cell.v?'sim':'não'; return; }
-      // Padrão: preferir valor formatado para números que parecem texto
-      o[k] = (cell.f !== undefined && cell.f !== null && cell.f !== '') ? cell.f : cell.v;
-      if(typeof o[k]==='number') o[k]=String(o[k]);
-      o[k]=o[k]??'';
+
+      // NÚMERO — converte para string
+      if(typeof cell.v==='number'){
+        o[k]=cell.f||String(cell.v);
+        return;
+      }
+
+      // TEXTO — usa valor direto
+      o[k]=cell.v??'';
     });
     return o;
   });
