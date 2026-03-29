@@ -1132,12 +1132,28 @@ async function syncData(silent=false) {
       ft(CFG.TABS.contatos),ft(CFG.TABS.apps),ft(CFG.TABS.avisos),
       ft(CFG.TABS.membros),ft(CFG.TABS.fotos),ft(CFG.TABS.config),
     ]);
+    // Config: converte array de {chave, valor} em objeto plano
+    let configObj = DEFAULTS.config;
+    if(cf && cf.length > 0) {
+      // Detecta se é formato chave/valor (tem coluna 'chave') ou linha única
+      if(cf[0].hasOwnProperty('chave') || cf[0].hasOwnProperty('chave')) {
+        configObj = {};
+        cf.forEach(row => {
+          const k = row.chave || row.key || '';
+          const v = row.valor || row.value || row.val || '';
+          if(k) configObj[k.trim()] = typeof v === 'string' ? v.trim() : v;
+        });
+      } else {
+        configObj = cf[0];
+      }
+    }
+
     D={
       cronograma:cr||DEFAULTS.cronograma, restaurantes:re||DEFAULTS.restaurantes,
       dicas:di||DEFAULTS.dicas, contatos:co||DEFAULTS.contatos,
       apps:ap||DEFAULTS.apps, avisos:av||[],
       membros:me||DEFAULTS.membros, fotos:fo||DEFAULTS.fotos,
-      config:cf?.[0]||DEFAULTS.config,
+      config:configObj,
     };
     saveCache(D); renderAll();
     setSyncState('ok','Atualizado');
