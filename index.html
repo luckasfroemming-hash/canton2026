@@ -1135,6 +1135,10 @@ async function syncData(silent=false) {
     if(!silent) showToast('Configure o SHEET_ID');
     return;
   }
+  // Limpa cache ao sincronizar manualmente para garantir dados frescos
+  if(!silent) {
+    try { localStorage.removeItem(CACHE_KEY); localStorage.removeItem(CACHE_TS); } catch(e){}
+  }
   setSyncState('loading','Sincronizando...');
   try {
     const ft = async(name) => {
@@ -1304,15 +1308,36 @@ function renderAll(){
   if(ts) document.getElementById('lastSync').textContent=ts;
 }
 
-// AVISO
+// AVISO — lê da aba Avisos (primeiro com ativo=sim)
 function renderAviso(){
-  const cfg=D.config||{};
   const banner=document.getElementById('alertBanner');
-  if((cfg.aviso_ativo==='sim'||cfg.aviso_ativo===true)&&cfg.titulo_aviso){
+  
+  // Prioridade 1: aba Avisos
+  const avisos = D.avisos || [];
+  const avisoAtivo = avisos.find(a =>
+    String(a.ativo||'').toLowerCase().trim() === 'sim'
+  );
+  
+  if(avisoAtivo && avisoAtivo.titulo){
     banner.classList.add('show');
-    document.getElementById('alertTitle').textContent=cfg.titulo_aviso;
-    document.getElementById('alertText').textContent=cfg.texto_aviso;
-  } else banner.classList.remove('show');
+    document.getElementById('alertTitle').textContent = avisoAtivo.titulo || '';
+    // Suporta <br> no texto para quebra de linha
+    document.getElementById('alertText').innerHTML =
+      (avisoAtivo.texto || '').replace(/\n/g,'<br>').replace(/&lt;br&gt;/gi,'<br>').replace(/<br>/gi,'<br>');
+    return;
+  }
+  
+  // Fallback: aba Config (compatibilidade retroativa)
+  const cfg = D.config || {};
+  if((cfg.aviso_ativo==='sim'||cfg.aviso_ativo===true) && cfg.titulo_aviso){
+    banner.classList.add('show');
+    document.getElementById('alertTitle').textContent = cfg.titulo_aviso;
+    document.getElementById('alertText').innerHTML =
+      (cfg.texto_aviso||'').replace(/\n/g,'<br>').replace(/&lt;br&gt;/gi,'<br>').replace(/<br>/gi,'<br>');
+    return;
+  }
+  
+  banner.classList.remove('show');
 }
 
 // ═══════════════════════════════════════════════
