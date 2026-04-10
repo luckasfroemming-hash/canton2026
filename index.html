@@ -137,7 +137,6 @@ img{max-width:100%}
 
 .header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
 
-/* Sync */
 .btn-sync{
   display:flex;align-items:center;gap:6px;
   padding:9px 15px;
@@ -155,7 +154,6 @@ img{max-width:100%}
 .sync-dot.error{background:var(--red)}
 @keyframes pulse{50%{opacity:.35}}
 
-/* Theme toggle */
 .theme-btn{
   width:44px;height:44px;
   background:var(--bg3);
@@ -168,7 +166,6 @@ img{max-width:100%}
 }
 .theme-btn:hover{border-color:var(--gold);background:var(--gold-dim)}
 
-/* User pill */
 .user-pill{
   display:none;align-items:center;gap:8px;
   padding:6px 14px 6px 6px;
@@ -183,7 +180,7 @@ img{max-width:100%}
 .user-name{color:var(--text);max-width:100px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 
 /* ═══════════════════════════════════════
-   TABS — Maiores, mais clicáveis
+   TABS
 ═══════════════════════════════════════ */
 .tabs{
   display:flex;gap:4px;
@@ -205,15 +202,8 @@ img{max-width:100%}
   white-space:nowrap;
   letter-spacing:0.02em;
 }
-.tab:hover:not(.active){
-  color:var(--text-soft);
-  background:var(--bg3);
-}
-.tab.active{
-  color:var(--gold);
-  border-bottom-color:var(--gold);
-  background:var(--gold-dim);
-}
+.tab:hover:not(.active){color:var(--text-soft);background:var(--bg3)}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold);background:var(--gold-dim)}
 .tab-icon{font-size:1.1rem}
 
 /* ═══════════════════════════════════════
@@ -250,22 +240,17 @@ img{max-width:100%}
   display:flex;align-items:center;justify-content:center;
   font-size:1.2rem;flex-shrink:0;
 }
-.sec-header h2{
-  font-family:'Playfair Display',serif;
-  font-size:var(--fs-h);font-weight:700;
-  color:var(--text);
-}
+.sec-header h2{font-family:'Playfair Display',serif;font-size:var(--fs-h);font-weight:700;color:var(--text)}
 
 /* ═══════════════════════════════════════
-   VIEW TOGGLE (Cronograma)
+   VIEW TOGGLE
 ═══════════════════════════════════════ */
 .view-toggle{
   display:flex;
   background:var(--bg3);
   border:2px solid var(--border-soft);
   border-radius:var(--radius-pill);
-  padding:4px;
-  gap:4px;
+  padding:4px;gap:4px;
   margin-bottom:20px;
   width:fit-content;
   box-shadow:var(--shadow-sm);
@@ -278,15 +263,11 @@ img{max-width:100%}
   transition:all var(--trans);
   display:flex;align-items:center;gap:6px;
 }
-.view-btn.active{
-  background:var(--gold);
-  color:var(--bg);
-  box-shadow:0 2px 8px rgba(226,184,74,.4);
-}
+.view-btn.active{background:var(--gold);color:var(--bg);box-shadow:0 2px 8px rgba(226,184,74,.4)}
 .view-btn:hover:not(.active){color:var(--text);background:var(--bg4)}
 
 /* ═══════════════════════════════════════
-   DIA CHIPS (Lista)
+   DIA CHIPS
 ═══════════════════════════════════════ */
 .day-scroller{
   display:flex;gap:10px;
@@ -294,17 +275,11 @@ img{max-width:100%}
   margin-bottom:22px;padding-bottom:2px;
 }
 .day-scroller::-webkit-scrollbar{display:none}
-
 .day-chip{
-  flex-shrink:0;
-  padding:10px 15px;
-  background:var(--bg3);
-  border:2px solid var(--border-soft);
-  border-radius:var(--radius-sm);
-  cursor:pointer;text-align:center;
-  transition:all var(--trans);
-  min-width:60px;
-  box-shadow:var(--shadow-sm);
+  flex-shrink:0;padding:10px 15px;
+  background:var(--bg3);border:2px solid var(--border-soft);
+  border-radius:var(--radius-sm);cursor:pointer;text-align:center;
+  transition:all var(--trans);min-width:60px;box-shadow:var(--shadow-sm);
 }
 .day-chip:hover{border-color:var(--gold-border);transform:translateY(-2px);box-shadow:var(--shadow)}
 .day-chip.active{background:var(--gold-dim);border-color:var(--gold);box-shadow:0 3px 12px rgba(226,184,74,.25)}
@@ -315,164 +290,87 @@ img{max-width:100%}
 
 .dia-block{display:none}
 .dia-block.active{display:block}
-
 .dia-label-card{
   background:linear-gradient(135deg,var(--bg3),var(--bg4));
   border:2px solid var(--border);
-  border-radius:var(--radius);
-  padding:18px;margin-bottom:16px;
-  box-shadow:var(--shadow-sm);
+  border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:var(--shadow-sm);
 }
 .dia-label-card h3{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:700;color:var(--gold);margin-bottom:5px}
 .dia-label-card p{font-size:var(--fs-base);color:var(--text-soft);line-height:1.5}
 
 /* ═══════════════════════════════════════
-   CALENDÁRIO MENSAL
+   CALENDÁRIO
 ═══════════════════════════════════════ */
 .cal-wrap{animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
 .cal-nav{
   display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:18px;
-  background:var(--bg3);
-  border:2px solid var(--border-soft);
-  border-radius:var(--radius);
-  padding:14px 18px;
-  box-shadow:var(--shadow-sm);
+  margin-bottom:18px;background:var(--bg3);border:2px solid var(--border-soft);
+  border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow-sm);
 }
 .cal-nav-btn{
-  width:42px;height:42px;
-  border-radius:var(--radius-sm);
-  background:var(--bg4);
-  border:2px solid var(--border-soft);
-  font-size:1.1rem;font-weight:700;
-  color:var(--text-soft);
-  display:flex;align-items:center;justify-content:center;
-  transition:all var(--trans);
-  box-shadow:var(--shadow-sm);
+  width:42px;height:42px;border-radius:var(--radius-sm);
+  background:var(--bg4);border:2px solid var(--border-soft);
+  font-size:1.1rem;font-weight:700;color:var(--text-soft);
+  display:flex;align-items:center;justify-content:center;transition:all var(--trans);box-shadow:var(--shadow-sm);
 }
 .cal-nav-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
 .cal-month-label{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:700;color:var(--text)}
 
-.cal-grid{
-  display:grid;grid-template-columns:repeat(7,1fr);
-  gap:6px;margin-bottom:20px;
-}
-.cal-dow{
-  text-align:center;
-  font-size:var(--fs-xs);font-weight:700;
-  color:var(--text-dim);
-  letter-spacing:.08em;text-transform:uppercase;
-  padding:8px 0;
-}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:20px}
+.cal-dow{text-align:center;font-size:var(--fs-xs);font-weight:700;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;padding:8px 0}
 .cal-day{
-  aspect-ratio:1;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  border-radius:var(--radius-sm);
-  cursor:pointer;
-  font-size:var(--fs-base);font-weight:600;
-  color:var(--text-soft);
-  background:var(--bg3);
-  border:2px solid transparent;
-  transition:all var(--trans);
-  gap:3px;
-  min-height:52px;
-  box-shadow:var(--shadow-sm);
+  aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:var(--fs-base);font-weight:600;
+  color:var(--text-soft);background:var(--bg3);border:2px solid transparent;
+  transition:all var(--trans);gap:3px;min-height:52px;box-shadow:var(--shadow-sm);
 }
 .cal-day:hover:not(.empty){border-color:var(--gold-border);color:var(--text);background:var(--gold-dim);transform:scale(1.06)}
 .cal-day.empty{background:transparent;box-shadow:none;cursor:default;border:none}
 .cal-day.has-events{border-color:var(--gold-border)}
 .cal-day.active-day{background:var(--gold);color:var(--bg);border-color:var(--gold);box-shadow:0 3px 14px rgba(226,184,74,.45)}
-.cal-day.active-day:hover{transform:scale(1.06)}
 .cal-dots{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;max-width:36px}
 .cal-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.cal-dot.viagem   {background:#4a9edd}
-.cal-dot.feira    {background:var(--gold)}
+.cal-dot.viagem    {background:#4a9edd}
+.cal-dot.feira     {background:var(--gold)}
 .cal-dot.alimentacao{background:#4cbb7f}
-.cal-dot.visita   {background:#b07ee8}
-.cal-dot.hotel    {background:var(--orange)}
-.cal-dot.livre    {background:var(--text-dim)}
-
-.cal-day-detail{
-  background:var(--bg3);
-  border:2px solid var(--border);
-  border-radius:var(--radius);
-  padding:18px;
-  margin-bottom:16px;
-  box-shadow:var(--shadow-sm);
-  animation:fadeIn .2s ease;
-}
+.cal-dot.visita    {background:#b07ee8}
+.cal-dot.hotel     {background:var(--orange)}
+.cal-dot.livre     {background:var(--text-dim)}
+.cal-day-detail{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:var(--shadow-sm);animation:fadeIn .2s ease}
 .cal-day-detail h3{font-family:'Playfair Display',serif;font-size:var(--fs-xl);color:var(--gold);margin-bottom:16px}
 
 /* ═══════════════════════════════════════
    TIMELINE
 ═══════════════════════════════════════ */
 .tl{position:relative}
-.tl::before{
-  content:'';position:absolute;
-  left:20px;top:22px;bottom:22px;width:2px;
-  background:linear-gradient(to bottom,var(--gold),transparent);
-  opacity:.2;
-}
-
+.tl::before{content:'';position:absolute;left:20px;top:22px;bottom:22px;width:2px;background:linear-gradient(to bottom,var(--gold),transparent);opacity:.2}
 .tl-item{display:flex;gap:14px;margin-bottom:14px;animation:fadeIn .3s ease both}
-
-.tl-dot{
-  flex-shrink:0;width:40px;height:40px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1rem;position:relative;z-index:1;
-  border:2px solid transparent;
-  box-shadow:var(--shadow-sm);
-}
+.tl-dot{flex-shrink:0;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;position:relative;z-index:1;border:2px solid transparent;box-shadow:var(--shadow-sm)}
 .tl-dot.viagem    {background:rgba(74,158,221,.2);border-color:rgba(74,158,221,.4)}
 .tl-dot.feira     {background:var(--gold-dim);border-color:var(--gold-border)}
 .tl-dot.alimentacao{background:rgba(76,187,127,.15);border-color:rgba(76,187,127,.35)}
 .tl-dot.visita    {background:rgba(176,126,232,.15);border-color:rgba(176,126,232,.35)}
 .tl-dot.hotel     {background:rgba(232,131,74,.15);border-color:rgba(232,131,74,.35)}
 .tl-dot.livre     {background:var(--bg4);border-color:var(--border-soft)}
-
-.tl-card{
-  flex:1;
-  background:var(--bg3);
-  border:2px solid var(--border-soft);
-  border-radius:var(--radius);
-  padding:14px 16px;
-  box-shadow:var(--shadow-sm);
-  transition:all var(--trans);
-  cursor:default;
-}
+.tl-card{flex:1;background:var(--bg3);border:2px solid var(--border-soft);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow-sm);transition:all var(--trans);cursor:default}
 .tl-card:hover{border-color:var(--gold-border);transform:translateX(3px);box-shadow:var(--shadow)}
-
 .tl-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
 .tl-title{font-size:var(--fs-base);font-weight:700;color:var(--text);flex:1;line-height:1.3}
-.tl-time{
-  font-size:var(--fs-xs);font-weight:700;color:var(--gold);
-  background:var(--gold-dim);
-  padding:3px 10px;border-radius:var(--radius-pill);
-  flex-shrink:0;margin-left:10px;border:1px solid var(--gold-border);
-}
+.tl-time{font-size:var(--fs-xs);font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 10px;border-radius:var(--radius-pill);flex-shrink:0;margin-left:10px;border:1px solid var(--gold-border)}
 .tl-desc{font-size:var(--fs-sm);color:var(--text-soft);line-height:1.6;margin-bottom:8px}
 .tl-loc{display:flex;align-items:center;gap:6px;font-size:var(--fs-sm);color:var(--text-dim);flex-wrap:wrap}
-.chinese-badge{
-  font-size:var(--fs-sm);color:var(--gold);
-  background:var(--gold-dim);
-  padding:2px 8px;border-radius:6px;border:1px solid var(--gold-border);
-  font-weight:600;
-}
+.chinese-badge{font-size:var(--fs-sm);color:var(--gold);background:var(--gold-dim);padding:2px 8px;border-radius:6px;border:1px solid var(--gold-border);font-weight:600}
 
 /* ═══════════════════════════════════════
    COPY BUTTON
 ═══════════════════════════════════════ */
 .copy-btn{
   display:inline-flex;align-items:center;gap:5px;
-  font-size:var(--fs-xs);font-weight:700;
-  color:var(--text-dim);
-  background:var(--bg4);
-  border:2px solid var(--border-soft);
-  border-radius:var(--radius-sm);
-  padding:5px 10px;margin-top:7px;cursor:pointer;
+  font-size:var(--fs-xs);font-weight:700;color:var(--text-dim);
+  background:var(--bg4);border:2px solid var(--border-soft);
+  border-radius:var(--radius-sm);padding:5px 10px;margin-top:7px;cursor:pointer;
   transition:all var(--trans);box-shadow:var(--shadow-sm);
 }
 .copy-btn:hover{color:var(--gold);border-color:var(--gold-border);background:var(--gold-dim)}
@@ -482,36 +380,16 @@ img{max-width:100%}
    RESTAURANTES
 ═══════════════════════════════════════ */
 .rest-grid{display:flex;flex-direction:column;gap:14px}
-
-.rest-card{
-  background:var(--bg3);
-  border:2px solid var(--border-soft);
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow-sm);
-  transition:all var(--trans);
-}
+.rest-card{background:var(--bg3);border:2px solid var(--border-soft);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:all var(--trans)}
 .rest-card:hover{border-color:var(--gold-border);box-shadow:var(--shadow)}
-
-.rest-head{
-  padding:16px 18px 12px;
-  border-bottom:2px solid var(--border-soft);
-  display:flex;justify-content:space-between;align-items:flex-start;
-}
+.rest-head{padding:16px 18px 12px;border-bottom:2px solid var(--border-soft);display:flex;justify-content:space-between;align-items:flex-start}
 .rest-name{font-size:var(--fs-lg);font-weight:700;color:var(--text)}
 .rest-sub{font-size:var(--fs-sm);color:var(--text-dim);margin-top:3px;font-weight:500}
-
-.badge{
-  font-size:11px;font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;
-  padding:5px 12px;border-radius:var(--radius-pill);
-  flex-shrink:0;margin-left:12px;border:2px solid transparent;
-}
+.badge{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;border-radius:var(--radius-pill);flex-shrink:0;margin-left:12px;border:2px solid transparent}
 .badge-gold  {background:var(--gold-dim);color:var(--gold);border-color:var(--gold-border)}
 .badge-red   {background:rgba(224,85,85,.12);color:var(--red);border-color:rgba(224,85,85,.3)}
 .badge-green {background:rgba(76,187,127,.12);color:var(--green);border-color:rgba(76,187,127,.3)}
 .badge-purple{background:rgba(176,126,232,.12);color:#b07ee8;border-color:rgba(176,126,232,.3)}
-
 .rest-body{padding:14px 18px;display:flex;flex-direction:column;gap:10px}
 .rest-row{display:flex;gap:10px;font-size:var(--fs-base)}
 .rest-row-lbl{color:var(--text-dim);flex-shrink:0;min-width:65px;font-weight:600}
@@ -521,35 +399,18 @@ img{max-width:100%}
    DICAS
 ═══════════════════════════════════════ */
 .dica-acc{display:flex;flex-direction:column;gap:12px}
-
-.dica-block{
-  background:var(--bg3);border:2px solid var(--border-soft);
-  border-radius:var(--radius);overflow:hidden;
-  box-shadow:var(--shadow-sm);
-}
-.dica-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 18px;cursor:pointer;
-  transition:background var(--trans);user-select:none;
-}
+.dica-block{background:var(--bg3);border:2px solid var(--border-soft);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.dica-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;transition:background var(--trans);user-select:none}
 .dica-head:hover{background:var(--bg4)}
 .dica-head-left{display:flex;align-items:center;gap:12px}
 .dica-head-icon{font-size:1.3rem}
 .dica-head-name{font-size:var(--fs-lg);font-weight:700;color:var(--text)}
-.dica-count{
-  font-size:var(--fs-xs);font-weight:700;color:var(--gold);
-  background:var(--gold-dim);
-  padding:3px 9px;border-radius:var(--radius-pill);border:1px solid var(--gold-border);
-}
+.dica-count{font-size:var(--fs-xs);font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:var(--radius-pill);border:1px solid var(--gold-border)}
 .dica-arrow{font-size:.9rem;color:var(--text-dim);transition:transform var(--trans);font-weight:700}
 .dica-head.open .dica-arrow{transform:rotate(180deg)}
 .dica-body{display:none;border-top:2px solid var(--border-soft)}
 .dica-body.open{display:block}
-.dica-item{
-  padding:14px 18px;
-  border-bottom:1px solid rgba(255,255,255,.04);
-  display:flex;gap:12px;
-}
+.dica-item{padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:12px}
 [data-theme="light"] .dica-item{border-bottom-color:rgba(0,0,0,.04)}
 .dica-item:last-child{border-bottom:none}
 .dica-item-ico{font-size:1.2rem;flex-shrink:0;margin-top:2px}
@@ -560,34 +421,164 @@ img{max-width:100%}
    CONTATOS
 ═══════════════════════════════════════ */
 .cont-list{display:flex;flex-direction:column;gap:10px}
-
-.cont-card{
-  background:var(--bg3);border:2px solid var(--border-soft);
-  border-radius:var(--radius);
-  padding:15px 18px;
-  display:flex;align-items:center;gap:14px;
-  box-shadow:var(--shadow-sm);
-  transition:all var(--trans);
-}
+.cont-card{background:var(--bg3);border:2px solid var(--border-soft);border-radius:var(--radius);padding:15px 18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm);transition:all var(--trans)}
 .cont-card:hover{border-color:var(--gold-border);box-shadow:var(--shadow)}
 .cont-info{flex:1;min-width:0}
 .cont-nome{font-size:var(--fs-lg);font-weight:700;color:var(--text)}
 .cont-funcao{font-size:var(--fs-sm);color:var(--text-dim);margin-top:2px;font-weight:500}
 .cont-tel{font-size:var(--fs-sm);color:var(--gold);margin-top:3px;font-weight:700}
 .cont-btns{display:flex;gap:8px;flex-shrink:0}
-.icon-btn{
-  width:44px;height:44px;border-radius:var(--radius-sm);
-  background:var(--bg4);border:2px solid var(--border-soft);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;
-  transition:all var(--trans);text-decoration:none;
-  box-shadow:var(--shadow-sm);
-}
+.icon-btn{width:44px;height:44px;border-radius:var(--radius-sm);background:var(--bg4);border:2px solid var(--border-soft);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all var(--trans);text-decoration:none;box-shadow:var(--shadow-sm)}
 .icon-btn:hover{border-color:var(--gold-border);background:var(--gold-dim);transform:translateY(-2px)}
 .icon-btn.wpp:hover{background:rgba(76,187,127,.15);border-color:rgba(76,187,127,.45)}
 
 /* ═══════════════════════════════════════
-   GALERIA — 2 colunas
+   GALERIA — ÁLBUM HERO (NOVO)
+═══════════════════════════════════════ */
+.album-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg4) 100%);
+  border: 2px solid var(--gold-border);
+  border-radius: var(--radius);
+  padding: 28px 22px 24px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: fadeIn .3s ease;
+}
+.album-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(226,184,74,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.album-hero-emoji {
+  font-size: 3.2rem;
+  display: block;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));
+}
+.album-hero h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.album-hero p {
+  font-size: var(--fs-sm);
+  color: var(--text-soft);
+  margin-bottom: 20px;
+  line-height: 1.7;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.album-hero p strong {
+  color: var(--text);
+}
+.album-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-album-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: var(--gold);
+  color: var(--bg);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(226,184,74,.4);
+  transition: all var(--trans);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-album-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(226,184,74,.5);
+}
+.btn-album-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  background: var(--bg5);
+  color: var(--text-soft);
+  border: 2px solid var(--border-soft);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--trans);
+}
+.btn-album-secondary:hover {
+  border-color: var(--gold-border);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+/* How-to steps */
+.album-howto {
+  background: var(--bg3);
+  border: 2px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 22px;
+}
+.album-howto-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.howto-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.howto-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.howto-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 2px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--gold);
+}
+.howto-text {
+  font-size: var(--fs-sm);
+  color: var(--text-soft);
+  line-height: 1.5;
+  padding-top: 2px;
+}
+.howto-text strong { color: var(--text); }
+
+/* ═══════════════════════════════════════
+   GALERIA — FOTOS GRID
 ═══════════════════════════════════════ */
 .photo-grid{
   display:grid;
@@ -595,57 +586,89 @@ img{max-width:100%}
   gap:10px;
 }
 .photo-card{
-  border-radius:var(--radius);
-  overflow:hidden;
-  background:var(--bg4);
-  border:2px solid var(--border-soft);
-  box-shadow:var(--shadow-sm);
-  cursor:pointer;
-  transition:all var(--trans);
-  display:flex;
-  flex-direction:column;
-  text-decoration:none;
+  border-radius:var(--radius);overflow:hidden;
+  background:var(--bg4);border:2px solid var(--border-soft);
+  box-shadow:var(--shadow-sm);cursor:pointer;transition:all var(--trans);
+  display:flex;flex-direction:column;text-decoration:none;
 }
 .photo-card:hover{border-color:var(--gold-border);transform:scale(1.02);box-shadow:var(--shadow)}
-
-/* Miniatura quadrada — não corta, cobre o espaço */
 .photo-thumb-wrap{
-  width:100%;
-  aspect-ratio:1/1;
-  overflow:hidden;
-  flex-shrink:0;
-  background:var(--bg5);
-  display:flex;align-items:center;justify-content:center;
+  width:100%;aspect-ratio:1/1;overflow:hidden;flex-shrink:0;
+  background:var(--bg5);display:flex;align-items:center;justify-content:center;
+  position:relative;
 }
-.photo-card img{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform var(--trans);
-}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform var(--trans)}
 .photo-card:hover img{transform:scale(1.06)}
-
-/* Info fica FORA da foto — não sobrepõe */
 .photo-card-info{
-  padding:9px 11px 10px;
-  background:var(--bg3);
-  border-top:1px solid var(--border-soft);
-  flex-shrink:0;
+  padding:9px 11px 10px;background:var(--bg3);
+  border-top:1px solid var(--border-soft);flex-shrink:0;
 }
 .photo-card-desc{font-size:var(--fs-sm);font-weight:600;color:var(--text);margin-bottom:2px;line-height:1.3}
 .photo-card-meta{font-size:var(--fs-xs);color:var(--text-dim);font-weight:500}
-.photo-card-date{font-size:var(--fs-xs);color:var(--gold);font-weight:700;margin-bottom:8px}
 
-/* Agrupamento por data */
+/* Link card (quando URL não pode ser embeddada) */
+.photo-link-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: var(--bg4);
+  text-align: center;
+  transition: background var(--trans);
+  text-decoration: none;
+}
+.photo-link-card:hover { background: var(--gold-dim); }
+.photo-link-icon { font-size: 2rem; }
+.photo-link-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.3;
+}
+.photo-link-hint {
+  font-size: 10px;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+/* Badge URL type */
+.url-type-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+/* Placeholder de erro */
+.photo-error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-dim);
+  font-size: var(--fs-xs);
+  text-align: center;
+  padding: 10px;
+}
+
 .photo-day-group{margin-bottom:24px}
 .photo-day-label{
-  font-family:'Playfair Display',serif;
-  font-size:var(--fs-lg);font-weight:700;
-  color:var(--text);
-  margin-bottom:12px;
-  padding-bottom:8px;
-  border-bottom:2px solid var(--border-soft);
-  display:flex;align-items:center;gap:8px;
+  font-family:'Playfair Display',serif;font-size:var(--fs-lg);font-weight:700;
+  color:var(--text);margin-bottom:12px;padding-bottom:8px;
+  border-bottom:2px solid var(--border-soft);display:flex;align-items:center;gap:8px;
 }
 .photo-day-label::before{content:'📅';font-family:initial}
 
@@ -658,132 +681,71 @@ img{max-width:100%}
 .photo-empty-icon{font-size:3rem;margin-bottom:12px;opacity:.4;display:block}
 .photo-empty p{font-size:var(--fs-base);line-height:1.6}
 .photo-empty small{font-size:var(--fs-sm);opacity:.7}
+.photo-empty code{
+  display:inline-block;
+  background:var(--bg4);
+  padding:2px 8px;border-radius:6px;
+  font-size:13px;color:var(--gold);
+  border:1px solid var(--gold-border);
+}
 
 /* ═══════════════════════════════════════
    ARQUIVOS
 ═══════════════════════════════════════ */
 .drive-section{margin-bottom:26px}
-.drive-section-title{
-  font-size:var(--fs-xs);font-weight:700;
-  color:var(--text-dim);letter-spacing:.12em;
-  text-transform:uppercase;margin-bottom:12px;
-}
+.drive-section-title{font-size:var(--fs-xs);font-weight:700;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
 .drive-btn{
   display:flex;align-items:center;gap:14px;width:100%;
-  padding:16px 18px;
-  background:var(--bg3);border:2px solid var(--border-soft);
-  border-radius:var(--radius);text-decoration:none;
-  box-shadow:var(--shadow-sm);
+  padding:16px 18px;background:var(--bg3);border:2px solid var(--border-soft);
+  border-radius:var(--radius);text-decoration:none;box-shadow:var(--shadow-sm);
   transition:all var(--trans);margin-bottom:10px;
 }
 .drive-btn:hover{border-color:var(--gold-border);transform:translateX(4px);box-shadow:var(--shadow)}
-.drive-btn-icon{
-  width:48px;height:48px;border-radius:13px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;flex-shrink:0;
-}
+.drive-btn-icon{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
 .drive-btn-icon.shared  {background:rgba(74,158,221,.18);border:2px solid rgba(74,158,221,.3)}
 .drive-btn-icon.personal{background:var(--gold-dim);border:2px solid var(--gold-border)}
+.drive-btn-icon.photos  {background:rgba(76,187,127,.15);border:2px solid rgba(76,187,127,.3)}
 .drive-btn-text{flex:1;text-align:left}
 .drive-btn-text strong{display:block;font-size:var(--fs-base);font-weight:700;color:var(--text);margin-bottom:3px}
 .drive-btn-text span{font-size:var(--fs-sm);color:var(--text-dim);font-weight:500}
 .drive-btn-arrow{font-size:1.1rem;color:var(--text-dim);font-weight:700}
-
-.drive-locked{
-  background:var(--bg3);border:2px dashed var(--border-soft);
-  border-radius:var(--radius);padding:24px 18px;text-align:center;
-  color:var(--text-dim);font-size:var(--fs-base);
-}
+.drive-locked{background:var(--bg3);border:2px dashed var(--border-soft);border-radius:var(--radius);padding:24px 18px;text-align:center;color:var(--text-dim);font-size:var(--fs-base)}
 .drive-locked-icon{font-size:2.2rem;margin-bottom:10px;opacity:.45;display:block}
 
 /* ═══════════════════════════════════════
-   APPS — Com ícones reais
+   APPS
 ═══════════════════════════════════════ */
-.apps-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:12px;margin-top:6px;
-}
-.app-card{
-  background:var(--bg3);border:2px solid var(--border-soft);
-  border-radius:var(--radius);padding:16px;
-  box-shadow:var(--shadow-sm);
-  transition:all var(--trans);
-}
+.apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.app-card{background:var(--bg3);border:2px solid var(--border-soft);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm);transition:all var(--trans)}
 .app-card:hover{border-color:var(--gold-border);box-shadow:var(--shadow);transform:translateY(-2px)}
-.app-icon-wrap{
-  width:52px;height:52px;border-radius:14px;
-  overflow:hidden;margin-bottom:10px;
-  background:var(--bg4);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.8rem;flex-shrink:0;
-  border:2px solid var(--border-soft);
-}
+.app-icon-wrap{width:52px;height:52px;border-radius:14px;overflow:hidden;margin-bottom:10px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;border:2px solid var(--border-soft)}
 .app-icon-wrap img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .app-name{font-size:var(--fs-base);font-weight:700;color:var(--text);margin-bottom:4px}
 .app-desc{font-size:var(--fs-sm);color:var(--text-soft);line-height:1.5}
-.app-obr{
-  display:inline-flex;align-items:center;gap:4px;
-  font-size:11px;font-weight:700;
-  background:rgba(76,187,127,.12);color:var(--green);
-  border:2px solid rgba(76,187,127,.28);
-  padding:3px 10px;border-radius:var(--radius-pill);margin-top:8px;
-}
+.app-obr{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;background:rgba(76,187,127,.12);color:var(--green);border:2px solid rgba(76,187,127,.28);padding:3px 10px;border-radius:var(--radius-pill);margin-top:8px}
 
 /* ═══════════════════════════════════════
    LOGIN CARD
 ═══════════════════════════════════════ */
-.login-card{
-  background:var(--bg3);border:2px solid var(--border);
-  border-radius:var(--radius);padding:30px 24px;
-  text-align:center;margin-bottom:22px;
-  box-shadow:var(--shadow-sm);
-}
+.login-card{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius);padding:30px 24px;text-align:center;margin-bottom:22px;box-shadow:var(--shadow-sm)}
 .login-card-icon{font-size:2.8rem;margin-bottom:14px;display:block}
 .login-card h3{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:700;color:var(--gold);margin-bottom:8px}
 .login-card p{font-size:var(--fs-base);color:var(--text-dim);margin-bottom:20px;line-height:1.6}
-.btn-login{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:12px 26px;background:var(--gold);
-  color:var(--bg);border-radius:var(--radius-pill);
-  font-size:var(--fs-base);font-weight:700;
-  transition:all var(--trans);
-  box-shadow:0 4px 16px rgba(226,184,74,.35);
-}
-.btn-login:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(226,184,74,.45)}
 
 /* ═══════════════════════════════════════
    SPINNER
 ═══════════════════════════════════════ */
 .spinner-wrap{text-align:center;padding:40px 20px;color:var(--text-dim)}
-.spinner{
-  width:36px;height:36px;border:3px solid var(--border-soft);
-  border-top-color:var(--gold);border-radius:50%;
-  animation:spin .75s linear infinite;margin:0 auto 12px;
-}
+.spinner{width:36px;height:36px;border:3px solid var(--border-soft);border-top-color:var(--gold);border-radius:50%;animation:spin .75s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner-label{font-size:var(--fs-base);font-weight:500}
 
 /* ═══════════════════════════════════════
    FOOTER + TOAST
 ═══════════════════════════════════════ */
-.footer{
-  text-align:center;padding:26px 18px;
-  font-size:var(--fs-sm);font-weight:500;color:var(--text-dim);
-  border-top:2px solid var(--border-soft);margin-top:36px;line-height:1.8;
-}
+.footer{text-align:center;padding:26px 18px;font-size:var(--fs-sm);font-weight:500;color:var(--text-dim);border-top:2px solid var(--border-soft);margin-top:36px;line-height:1.8}
 .footer span{color:var(--gold);font-weight:700}
-
-.toast{
-  position:fixed;bottom:24px;left:50%;
-  transform:translateX(-50%) translateY(80px);
-  background:var(--bg3);border:2px solid var(--gold-border);
-  color:var(--text);padding:12px 24px;
-  border-radius:var(--radius-pill);
-  font-size:var(--fs-base);font-weight:600;
-  z-index:9999;
-  transition:transform .3s cubic-bezier(.4,0,.2,1);
-  white-space:nowrap;box-shadow:var(--shadow);pointer-events:none;
-}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg3);border:2px solid var(--gold-border);color:var(--text);padding:12px 24px;border-radius:var(--radius-pill);font-size:var(--fs-base);font-weight:600;z-index:9999;transition:transform .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;box-shadow:var(--shadow);pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
 @media(max-width:440px){
@@ -793,6 +755,9 @@ img{max-width:100%}
   .brand h1{font-size:1.4rem}
   .photo-card-desc{font-size:12px}
   .photo-card-info{padding:7px 8px 8px}
+  .album-hero{padding:20px 16px}
+  .album-btns{flex-direction:column;align-items:center}
+  .btn-album-primary,.btn-album-secondary{width:100%;justify-content:center}
 }
 </style>
 </head>
@@ -844,21 +809,15 @@ img{max-width:100%}
 
   <!-- ══ CRONOGRAMA ══ -->
   <div class="section active" id="sec-cronograma">
-    <div class="sec-header">
-      <div class="sec-icon">📅</div>
-      <h2>Cronograma</h2>
-    </div>
-    <!-- Toggle Visualização -->
+    <div class="sec-header"><div class="sec-icon">📅</div><h2>Cronograma</h2></div>
     <div class="view-toggle">
       <button class="view-btn active" id="btnLista" onclick="setView('lista')">📋 Lista</button>
       <button class="view-btn" id="btnCal" onclick="setView('calendario')">📅 Calendário</button>
     </div>
-    <!-- Vista Lista -->
     <div id="viewLista">
       <div class="day-scroller" id="dayScroller"></div>
       <div id="dayBlocks"></div>
     </div>
-    <!-- Vista Calendário -->
     <div id="viewCal" style="display:none">
       <div class="cal-wrap">
         <div class="cal-nav">
@@ -900,7 +859,7 @@ img{max-width:100%}
   <div class="section" id="sec-galeria">
     <div class="sec-header"><div class="sec-icon">📷</div><h2>Fotos da Viagem</h2></div>
     <div id="photoContainer">
-      <div class="spinner-wrap"><div class="spinner"></div><p class="spinner-label">Carregando fotos...</p></div>
+      <div class="spinner-wrap"><div class="spinner"></div><p class="spinner-label">Carregando...</p></div>
     </div>
   </div>
 
@@ -917,6 +876,7 @@ img{max-width:100%}
         </div>
         <div class="drive-btn-arrow">→</div>
       </a>
+      <div id="albumArquivoArea"></div>
     </div>
     <div class="drive-section">
       <div class="drive-section-title">🔒 Minha Pasta Pessoal</div>
@@ -967,30 +927,26 @@ const CFG = {
   },
 };
 
-// ═══════════════════════════════════════════════
-//  ÍCONES PADRÃO DOS APPS (fallback se não tiver URL na planilha)
-// ═══════════════════════════════════════════════
 const APP_ICONS = {
-  'WhatsApp':       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/120px-WhatsApp.svg.png',
-  'WeChat':         'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/WeChat_logo.svg/120px-WeChat_logo.svg.png',
-  'Alipay':         'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Alipay_%28LOGO%29.svg/120px-Alipay_%28LOGO%29.svg.png',
+  'WhatsApp':        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/120px-WhatsApp.svg.png',
+  'WeChat':          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/WeChat_logo.svg/120px-WeChat_logo.svg.png',
+  'Alipay':          'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Alipay_%28LOGO%29.svg/120px-Alipay_%28LOGO%29.svg.png',
   'Google Translate':'https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Translate_Icon.png',
-  'Maps.me':        'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/MAPS.ME_logo.svg/120px-MAPS.ME_logo.svg.png',
-  'Didi':           'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/DiDi_company_logo.svg/120px-DiDi_company_logo.svg.png',
-  'XE Currency':    'https://play-lh.googleusercontent.com/1IlOqVzOlXo7DWHGcW3J3e5iBNSXxbqFXcfWX4XpAhh6sB1dU3pIVVy4fJlxKJqbBg=w120-h120',
-  'Wanderlog':      'https://play-lh.googleusercontent.com/SsS0o7-xT-S2tB5bZLtWFBeSoYTiHN8Vv0Ln7rPNBfJz5LK0-dT9nGD4FU5QzW5mw=w120-h120',
-  'Google Photos':  'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/120px-Google_Photos_icon_%282020%29.svg.png',
+  'Maps.me':         'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/MAPS.ME_logo.svg/120px-MAPS.ME_logo.svg.png',
+  'Didi':            'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/DiDi_company_logo.svg/120px-DiDi_company_logo.svg.png',
+  'XE Currency':     'https://play-lh.googleusercontent.com/1IlOqVzOlXo7DWHGcW3J3e5iBNSXxbqFXcfWX4XpAhh6sB1dU3pIVVy4fJlxKJqbBg=w120-h120',
+  'Wanderlog':       'https://play-lh.googleusercontent.com/SsS0o7-xT-S2tB5bZLtWFBeSoYTiHN8Vv0Ln7rPNBfJz5LK0-dT9nGD4FU5QzW5mw=w120-h120',
+  'Google Photos':   'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/120px-Google_Photos_icon_%282020%29.svg.png',
 };
 
-// ═══════════════════════════════════════════════
-//  DEFAULTS
-// ═══════════════════════════════════════════════
 const DEFAULTS = {
   config: {
     titulo_aviso:'⚠️ Atenção — Alfândega Brasileira',
     texto_aviso:'Limite de isenção: USD 500 por pessoa. Itens acima devem ser declarados. Réplicas podem ser apreendidas na volta.',
     aviso_ativo:'sim',
     shared_drive_url: CFG.SHARED_DRIVE_URL,
+    album_fotos_url: '',
+    album_fotos_nome: 'Canton Fair 2026',
   },
   membros:[
     {nome:'Lucas',  email:'luckasfroemming@gmail.com',pasta_id:'1IBWh-_Hg2QnZDiaB1MDP_V2hxZ6fKyPK'},
@@ -1079,45 +1035,104 @@ let D = null;
 let currentUser = null;
 let activeDay = null;
 let cronView = 'lista';
-let calYear = 2026, calMonth = 3; // Abril = 3 (0-indexed)
+let calYear = 2026, calMonth = 3;
 let calActiveDate = null;
 
 const CACHE_KEY='cf26_cache', CACHE_TS='cf26_ts', THEME_KEY='cf26_theme';
 
 // ═══════════════════════════════════════════════
+//  DETECÇÃO INTELIGENTE DE URL (NOVO)
+// ═══════════════════════════════════════════════
+
+/**
+ * Detecta o tipo de URL de imagem/mídia.
+ * Tipos: 'gdrive' | 'gphotos-direct' | 'gphotos-share' | 'direct-image' | 'unknown' | 'empty'
+ */
+function detectUrlType(url) {
+  if (!url || typeof url !== 'string' || !url.trim()) return 'empty';
+  url = url.trim();
+
+  // Google Drive file
+  if (url.match(/drive\.google\.com\/file\/d\//) ||
+      url.match(/drive\.google\.com\/open\?/) ||
+      url.match(/drive\.google\.com\/uc\?/)) return 'gdrive';
+
+  // Google Photos — URL direta de imagem (lh3/lh4/lh5/lh6)
+  if (url.match(/lh[3-9]\.googleusercontent\.com/)) return 'gphotos-direct';
+
+  // Google Photos — link de compartilhamento (não embeddable como img)
+  if (url.match(/photos\.google\.com\/share\//) ||
+      url.match(/photos\.app\.goo\.gl\//) ||
+      url.match(/photos\.google\.com\/photo\//)) return 'gphotos-share';
+
+  // Imagem direta (por extensão)
+  if (url.match(/\.(jpg|jpeg|png|gif|webp|avif|bmp|svg)(\?|$|#)/i)) return 'direct-image';
+
+  // Tenta qualquer coisa que pareça uma URL de imagem cdn
+  if (url.match(/\.(jpg|jpeg|png|gif|webp)/i)) return 'direct-image';
+
+  return 'unknown';
+}
+
+/**
+ * Retorna a URL de thumbnail para exibição inline.
+ * Retorna '' quando não é possível embed direto.
+ */
+function smartThumb(url) {
+  const type = detectUrlType(url);
+  switch (type) {
+    case 'gdrive': {
+      // Extrai ID do Drive e gera thumbnail
+      const m = url.match(/\/file\/d\/([^\/\?#]+)/) ||
+                url.match(/[?&]id=([^&\s#]+)/);
+      return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w600` : '';
+    }
+    case 'gphotos-direct':
+      // lh3.googleusercontent.com aceita parâmetros de size
+      return url.replace(/=\w+$/, '') + '=w600-h600-c';
+    case 'direct-image':
+      return url;
+    case 'gphotos-share':
+    case 'unknown':
+    default:
+      return ''; // não consegue embed — vai mostrar link card
+  }
+}
+
+/**
+ * Retorna a URL para abrir a mídia em tela cheia.
+ */
+function smartOriginal(url) {
+  if (!url) return '#';
+  const m = url.match(/\/file\/d\/([^\/\?#]+)/);
+  if (m) return `https://drive.google.com/file/d/${m[1]}/view`;
+  return url;
+}
+
+// ═══════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════
 async function init() {
-  // Restaurar tema
   const t = localStorage.getItem(THEME_KEY) || 'dark';
   setTheme(t);
 
-  // Restaurar sessão salva — não pede login toda vez
   try {
     const saved = localStorage.getItem('cf26_user');
-    if(saved) {
-      currentUser = JSON.parse(saved);
-      applyUserUI();
-    }
+    if (saved) { currentUser = JSON.parse(saved); applyUserUI(); }
   } catch(e){}
 
-  // Configurar auto-login silencioso do Google
-  if(CFG.GOOGLE_CLIENT_ID && !CFG.GOOGLE_CLIENT_ID.includes('SEU_GOOGLE')) {
-    if(window.google?.accounts?.id) {
+  if (CFG.GOOGLE_CLIENT_ID && !CFG.GOOGLE_CLIENT_ID.includes('SEU_GOOGLE')) {
+    if (window.google?.accounts?.id) {
       google.accounts.id.initialize({
         client_id: CFG.GOOGLE_CLIENT_ID,
         callback: onGoogleLogin,
-        auto_select: true,       // tenta logar automaticamente
+        auto_select: true,
         cancel_on_tap_outside: false,
       });
-      // Só mostra o prompt se ainda não estiver logado
-      if(!currentUser) {
-        google.accounts.id.prompt();
-      }
+      if (!currentUser) google.accounts.id.prompt();
     }
   }
 
-  // Dados
   D = loadCache() || DEFAULTS;
   renderAll();
   if (CFG.SHEET_ID && CFG.SHEET_ID !== 'COLE_SEU_SHEET_ID_AQUI') {
@@ -1132,11 +1147,10 @@ async function init() {
 // ═══════════════════════════════════════════════
 async function syncData(silent=false) {
   if (!CFG.SHEET_ID || CFG.SHEET_ID==='COLE_SEU_SHEET_ID_AQUI') {
-    if(!silent) showToast('Configure o SHEET_ID');
+    if (!silent) showToast('Configure o SHEET_ID');
     return;
   }
-  // Limpa cache ao sincronizar manualmente para garantir dados frescos
-  if(!silent) {
+  if (!silent) {
     try { localStorage.removeItem(CACHE_KEY); localStorage.removeItem(CACHE_TS); } catch(e){}
   }
   setSyncState('loading','Sincronizando...');
@@ -1144,12 +1158,10 @@ async function syncData(silent=false) {
     const ft = async(name) => {
       const url=`https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/gviz/tq?tqx=out:json&headers=1&sheet=${encodeURIComponent(name)}`;
       const r=await fetch(url); const txt=await r.text();
-      // Extrai o JSON do wrapper JSONP do Google
-      const start = txt.indexOf('{');
-      const end   = txt.lastIndexOf('}');
+      const start=txt.indexOf('{'); const end=txt.lastIndexOf('}');
       if(start===-1||end===-1) return null;
       let json;
-      try { json = JSON.parse(txt.slice(start, end+1)); } catch(e) { console.error('parse err',e); return null; }
+      try { json=JSON.parse(txt.slice(start,end+1)); } catch(e){ return null; }
       return parseGViz(json.table);
     };
     const [cr,re,di,co,ap,av,me,fo,cf]=await Promise.all([
@@ -1157,22 +1169,19 @@ async function syncData(silent=false) {
       ft(CFG.TABS.contatos),ft(CFG.TABS.apps),ft(CFG.TABS.avisos),
       ft(CFG.TABS.membros),ft(CFG.TABS.fotos),ft(CFG.TABS.config),
     ]);
-    // Config: converte array de {chave, valor} em objeto plano
     let configObj = DEFAULTS.config;
     if(cf && cf.length > 0) {
-      // Detecta se é formato chave/valor (tem coluna 'chave') ou linha única
-      if(cf[0].hasOwnProperty('chave') || cf[0].hasOwnProperty('chave')) {
+      if(cf[0].hasOwnProperty('chave')) {
         configObj = {};
         cf.forEach(row => {
           const k = row.chave || row.key || '';
           const v = row.valor || row.value || row.val || '';
-          if(k) configObj[k.trim()] = typeof v === 'string' ? v.trim() : v;
+          if(k) configObj[k.trim()] = typeof v==='string'?v.trim():v;
         });
       } else {
         configObj = cf[0];
       }
     }
-
     D={
       cronograma:cr||DEFAULTS.cronograma, restaurantes:re||DEFAULTS.restaurantes,
       dicas:di||DEFAULTS.dicas, contatos:co||DEFAULTS.contatos,
@@ -1194,53 +1203,32 @@ async function syncData(silent=false) {
 
 function parseGViz(table) {
   if(!table?.cols?.length) return [];
-  const headers = table.cols.map(c=>(c.label||'').toLowerCase().trim().replace(/\s+/g,'_'));
-  const types   = table.cols.map(c=>c.type||'string');
+  const headers=table.cols.map(c=>(c.label||'').toLowerCase().trim().replace(/\s+/g,'_'));
+  const types=table.cols.map(c=>c.type||'string');
   return (table.rows||[]).filter(r=>r.c?.some(c=>c?.v!=null&&c.v!=='')).map(row=>{
     const o={};
     headers.forEach((k,i)=>{
-      const cell = row.c?.[i];
-      if(!cell||cell.v==null){ o[k]=''; return; }
-      const t = types[i];
-
-      // HORÁRIO — GSheets retorna array [H, M, S, ms] ou decimal
+      const cell=row.c?.[i];
+      if(!cell||cell.v==null){o[k]='';return;}
+      const t=types[i];
       if(t==='timeofday'||t==='time'){
-        if(Array.isArray(cell.v)){
-          o[k]=String(cell.v[0]).padStart(2,'0')+':'+String(cell.v[1]).padStart(2,'0');
-        } else if(typeof cell.v==='number'){
-          const tot=Math.round(cell.v*1440);
-          o[k]=String(Math.floor(tot/60)).padStart(2,'0')+':'+String(tot%60).padStart(2,'0');
-        } else { o[k]=cell.f||String(cell.v)||''; }
+        if(Array.isArray(cell.v)){o[k]=String(cell.v[0]).padStart(2,'0')+':'+String(cell.v[1]).padStart(2,'0');}
+        else if(typeof cell.v==='number'){const tot=Math.round(cell.v*1440);o[k]=String(Math.floor(tot/60)).padStart(2,'0')+':'+String(tot%60).padStart(2,'0');}
+        else{o[k]=cell.f||String(cell.v)||'';}
         return;
       }
-
-      // DATA — GSheets retorna Date(ano,mes,dia) — converter para DD/MM
       if(t==='date'||t==='datetime'){
-        // cell.v vem como "Date(2026,3,11)" onde mês é 0-indexed
         if(typeof cell.v==='string'&&cell.v.startsWith('Date(')){
           const parts=cell.v.replace('Date(','').replace(')','').split(',').map(Number);
-          const dia=String(parts[2]).padStart(2,'0');
-          const mes=String(parts[1]+1).padStart(2,'0'); // +1 porque 0-indexed
-          o[k]=`${dia}/${mes}`;
+          o[k]=`${String(parts[2]).padStart(2,'0')}/${String(parts[1]+1).padStart(2,'0')}`;
         } else {
-          // Fallback: usa o valor formatado da célula
           o[k]=cell.f||String(cell.v)||'';
-          // Se o formato for DD/MM/AAAA, pega só DD/MM
           if(o[k].match(/\d{2}\/\d{2}\/\d{4}/)) o[k]=o[k].slice(0,5);
         }
         return;
       }
-
-      // BOOLEAN
-      if(t==='boolean'){ o[k]=cell.v?'sim':'não'; return; }
-
-      // NÚMERO — converte para string
-      if(typeof cell.v==='number'){
-        o[k]=cell.f||String(cell.v);
-        return;
-      }
-
-      // TEXTO — usa valor direto
+      if(t==='boolean'){o[k]=cell.v?'sim':'não';return;}
+      if(typeof cell.v==='number'){o[k]=cell.f||String(cell.v);return;}
       o[k]=cell.v??'';
     });
     return o;
@@ -1260,9 +1248,7 @@ function loadCache(){
 // ═══════════════════════════════════════════════
 //  TEMA
 // ═══════════════════════════════════════════════
-function toggleTheme(){
-  setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
-}
+function toggleTheme(){setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')}
 function setTheme(t){
   document.documentElement.setAttribute('data-theme',t);
   localStorage.setItem(THEME_KEY,t);
@@ -1276,23 +1262,19 @@ function setTheme(t){
 function onGoogleLogin(response){
   const p=JSON.parse(atob(response.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
   currentUser={name:p.name,email:p.email,picture:p.picture};
-  // Salva sessão no celular para não pedir login toda vez
-  try { localStorage.setItem('cf26_user', JSON.stringify(currentUser)); } catch(e){}
+  try{localStorage.setItem('cf26_user',JSON.stringify(currentUser));}catch(e){}
   applyUserUI();
 }
-
 function applyUserUI(){
   if(!currentUser) return;
-  const pill=document.getElementById('userPill');
   document.getElementById('userAvatar').src=currentUser.picture||'';
   document.getElementById('userName').textContent=currentUser.name?.split(' ')[0]||'';
-  pill.classList.add('show');
+  document.getElementById('userPill').classList.add('show');
   renderPersonalDrive();
 }
-
 function logoutUser(){
   currentUser=null;
-  try { localStorage.removeItem('cf26_user'); } catch(e){}
+  try{localStorage.removeItem('cf26_user');}catch(e){}
   document.getElementById('userPill').classList.remove('show');
   renderPersonalDrive();
 }
@@ -1308,35 +1290,23 @@ function renderAll(){
   if(ts) document.getElementById('lastSync').textContent=ts;
 }
 
-// AVISO — lê da aba Avisos (primeiro com ativo=sim)
 function renderAviso(){
   const banner=document.getElementById('alertBanner');
-  
-  // Prioridade 1: aba Avisos
-  const avisos = D.avisos || [];
-  const avisoAtivo = avisos.find(a =>
-    String(a.ativo||'').toLowerCase().trim() === 'sim'
-  );
-  
-  if(avisoAtivo && avisoAtivo.titulo){
+  const avisos=D.avisos||[];
+  const avisoAtivo=avisos.find(a=>String(a.ativo||'').toLowerCase().trim()==='sim');
+  if(avisoAtivo&&avisoAtivo.titulo){
     banner.classList.add('show');
-    document.getElementById('alertTitle').textContent = avisoAtivo.titulo || '';
-    // Suporta <br> no texto para quebra de linha
-    document.getElementById('alertText').innerHTML =
-      (avisoAtivo.texto || '').replace(/\n/g,'<br>').replace(/&lt;br&gt;/gi,'<br>').replace(/<br>/gi,'<br>');
+    document.getElementById('alertTitle').textContent=avisoAtivo.titulo||'';
+    document.getElementById('alertText').innerHTML=(avisoAtivo.texto||'').replace(/\n/g,'<br>').replace(/&lt;br&gt;/gi,'<br>');
     return;
   }
-  
-  // Fallback: aba Config (compatibilidade retroativa)
-  const cfg = D.config || {};
-  if((cfg.aviso_ativo==='sim'||cfg.aviso_ativo===true) && cfg.titulo_aviso){
+  const cfg=D.config||{};
+  if((cfg.aviso_ativo==='sim'||cfg.aviso_ativo===true)&&cfg.titulo_aviso){
     banner.classList.add('show');
-    document.getElementById('alertTitle').textContent = cfg.titulo_aviso;
-    document.getElementById('alertText').innerHTML =
-      (cfg.texto_aviso||'').replace(/\n/g,'<br>').replace(/&lt;br&gt;/gi,'<br>').replace(/<br>/gi,'<br>');
+    document.getElementById('alertTitle').textContent=cfg.titulo_aviso;
+    document.getElementById('alertText').innerHTML=(cfg.texto_aviso||'').replace(/\n/g,'<br>').replace(/&lt;br&gt;/gi,'<br>');
     return;
   }
-  
   banner.classList.remove('show');
 }
 
@@ -1349,8 +1319,6 @@ function renderCronograma(){
   const dates=Object.keys(byDate);
   if(!dates.length) return;
   if(!activeDay||!byDate[activeDay]) activeDay=dates[0];
-
-  // Chips
   const scroller=document.getElementById('dayScroller');
   scroller.innerHTML=dates.map(d=>{
     const[dia,mes]=d.split('/');
@@ -1363,8 +1331,6 @@ function renderCronograma(){
       ${tag?`<span class="chip-tag">${tag}</span>`:''}
     </div>`;
   }).join('');
-
-  // Blocos
   document.getElementById('dayBlocks').innerHTML=dates.map(d=>{
     const items=byDate[d];
     const sub=items[0]?.subtitulo||items[0]?.titulo||'';
@@ -1373,8 +1339,6 @@ function renderCronograma(){
       <div class="tl">${items.map((it,i)=>tlItem(it,i)).join('')}</div>
     </div>`;
   }).join('');
-
-  // Calendário
   renderCal();
 }
 
@@ -1405,7 +1369,7 @@ function selectDay(d){
 }
 
 // ═══════════════════════════════════════════════
-//  CRONOGRAMA — CALENDÁRIO MENSAL
+//  CRONOGRAMA — CALENDÁRIO
 // ═══════════════════════════════════════════════
 function setView(v){
   cronView=v;
@@ -1419,8 +1383,6 @@ function setView(v){
 function renderCal(){
   const meses=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   document.getElementById('calMonthLabel').textContent=`${meses[calMonth]} ${calYear}`;
-
-  // Mapear eventos por data
   const byDate={};
   (D.cronograma||[]).forEach(r=>{
     if(!r.data) return;
@@ -1429,34 +1391,24 @@ function renderCal(){
     if(!byDate[key]) byDate[key]=[];
     byDate[key].push(r);
   });
-
   const firstDay=new Date(calYear,calMonth,1).getDay();
   const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
   const dows=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-
   let html=dows.map(d=>`<div class="cal-dow">${d}</div>`).join('');
-
-  // Dias em branco antes do 1º
   for(let i=0;i<firstDay;i++) html+=`<div class="cal-day empty"></div>`;
-
   for(let d=1;d<=daysInMonth;d++){
     const mm=String(calMonth+1).padStart(2,'0');
     const dd=String(d).padStart(2,'0');
     const key=`${calYear}-${mm}-${dd}`;
     const evts=byDate[key]||[];
     const isActive=calActiveDate===key;
-    const hasEvts=evts.length>0;
     const dotHtml=evts.slice(0,4).map(e=>`<span class="cal-dot ${e.tipo||'livre'}"></span>`).join('');
-    html+=`<div class="cal-day${hasEvts?' has-events':''}${isActive?' active-day':''}" onclick="selectCalDay('${key}','${d}/${mm}')">
-      ${d}
-      ${hasEvts?`<div class="cal-dots">${dotHtml}</div>`:''}
+    html+=`<div class="cal-day${evts.length?' has-events':''}${isActive?' active-day':''}" onclick="selectCalDay('${key}','${d}/${mm}')">
+      ${d}${evts.length?`<div class="cal-dots">${dotHtml}</div>`:''}
     </div>`;
   }
-
   document.getElementById('calGrid').innerHTML=html;
-
-  // Detalhe do dia selecionado
-  if(calActiveDate && byDate[calActiveDate]){
+  if(calActiveDate&&byDate[calActiveDate]){
     const items=byDate[calActiveDate];
     const[,mm,dd]=calActiveDate.split('-');
     document.getElementById('calDayDetail').innerHTML=`
@@ -1469,26 +1421,13 @@ function renderCal(){
   }
 }
 
-function selectCalDay(key,dataBR){
+function selectCalDay(key){
   calActiveDate=(calActiveDate===key?null:key);
   renderCal();
-  if(calActiveDate){
-    setTimeout(()=>document.getElementById('calDayDetail')?.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
-  }
+  if(calActiveDate) setTimeout(()=>document.getElementById('calDayDetail')?.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
 }
-
-function calPrev(){
-  calMonth--;
-  if(calMonth<0){calMonth=11;calYear--;}
-  calActiveDate=null;
-  renderCal();
-}
-function calNext(){
-  calMonth++;
-  if(calMonth>11){calMonth=0;calYear++;}
-  calActiveDate=null;
-  renderCal();
-}
+function calPrev(){calMonth--;if(calMonth<0){calMonth=11;calYear--;}calActiveDate=null;renderCal()}
+function calNext(){calMonth++;if(calMonth>11){calMonth=0;calYear++;}calActiveDate=null;renderCal()}
 
 function fmtDate(d){
   const[dia,mes]=d.split('/');
@@ -1581,68 +1520,129 @@ function renderContatos(){
 }
 
 // ═══════════════════════════════════════════════
-//  GALERIA — 2 colunas com link para original
+//  GALERIA — COM SUPORTE A GOOGLE PHOTOS (NOVO)
 // ═══════════════════════════════════════════════
-function driveThumb(url) {
-  // Converte qualquer link do Drive para thumbnail que funciona inline
-  if(!url) return '';
-  let id = '';
-  // Formato: /file/d/ID/view ou uc?id=ID ou /open?id=ID
-  const m1 = url.match(/\/file\/d\/([^\/\?]+)/);
-  const m2 = url.match(/[?&]id=([^&]+)/);
-  if(m1) id = m1[1];
-  else if(m2) id = m2[1];
-  if(id) return `https://drive.google.com/thumbnail?id=${id}&sz=w600`;
-  return url; // fallback
-}
 
-function driveOriginal(url) {
-  // Link para abrir o arquivo original no Drive
-  if(!url) return '#';
-  const m1 = url.match(/\/file\/d\/([^\/\?]+)/);
-  const m2 = url.match(/[?&]id=([^&]+)/);
-  let id = '';
-  if(m1) id = m1[1];
-  else if(m2) id = m2[1];
-  if(id) return `https://drive.google.com/file/d/${id}/view`;
-  return url;
-}
+function renderGaleria() {
+  const container = document.getElementById('photoContainer');
+  const fotos = D.fotos || [];
+  const cfg = D.config || {};
 
-function renderGaleria(){
-  const container=document.getElementById('photoContainer');
-  const fotos=D.fotos||[];
-  if(!fotos.length){
-    container.innerHTML=`<div class="photo-empty">
-      <span class="photo-empty-icon">📸</span>
-      <p>As fotos da viagem aparecerão aqui.<br>
-      <small>Lucas adicionará as imagens durante a viagem via Google Sheets (aba Fotos).</small></p>
-    </div>`;
-    return;
-  }
-  const byDate={};
-  fotos.forEach(f=>{const d=f.data||'Sem data';if(!byDate[d])byDate[d]=[];byDate[d].push(f);});
+  // Lê URL do álbum — aceita as duas chaves possíveis na planilha
+  const albumUrl = (cfg.album_fotos_url || cfg.album_url || '').trim();
+  const albumNome = (cfg.album_fotos_nome || cfg.album_nome || 'Canton Fair 2026').trim();
 
-  container.innerHTML=Object.entries(byDate).map(([d,imgs])=>`
-    <div class="photo-day-group">
-      <div class="photo-day-label">${fmtDate(d)}</div>
-      <div class="photo-grid">
-        ${imgs.map(img=>{
-          const thumb   = driveThumb(img.url||'');
-          const original= driveOriginal(img.url||'');
-          const hasInfo = img.descricao || img.autor;
-          return `<a class="photo-card" href="${original}" target="_blank" rel="noopener">
-            <div class="photo-thumb-wrap">
-              <img src="${thumb}" alt="${esc(img.descricao||'')}" loading="lazy"
-                onerror="this.parentElement.innerHTML='<div style=&quot;padding:20px;text-align:center;color:var(--text-dim);font-size:0.8rem&quot;>📷</div>'">
-            </div>
-            ${hasInfo ? `<div class="photo-card-info">
-              ${img.descricao?`<div class="photo-card-desc">${img.descricao}</div>`:''}
-              ${img.autor?`<div class="photo-card-meta">${img.autor}</div>`:''}
-            </div>` : ''}
-          </a>`;
-        }).join('')}
+  let html = '';
+
+  // ── CARD DO ÁLBUM (quando configurado) ──────────────────────────
+  if (albumUrl) {
+    html += `
+    <div class="album-hero">
+      <span class="album-hero-emoji">📸</span>
+      <h3>${esc(albumNome)}</h3>
+      <p>Todas as fotos da viagem reunidas em <strong>tempo real</strong>.<br>
+         Qualquer membro pode adicionar pelo celular — sem precisar mexer na planilha.</p>
+      <div class="album-btns">
+        <a class="btn-album-primary" href="${esc(albumUrl)}" target="_blank" rel="noopener">
+          🖼️ Abrir Álbum
+        </a>
+        <button class="btn-album-secondary" onclick="copyText('${esc(albumUrl)}',this)">
+          🔗 Copiar Link
+        </button>
       </div>
-    </div>`).join('');
+    </div>
+    <div class="album-howto">
+      <div class="album-howto-title">📲 Como adicionar fotos</div>
+      <div class="howto-steps">
+        <div class="howto-step">
+          <div class="howto-num">1</div>
+          <div class="howto-text">Abra o <strong>Google Fotos</strong> no celular e tire ou selecione uma foto</div>
+        </div>
+        <div class="howto-step">
+          <div class="howto-num">2</div>
+          <div class="howto-text">Toque em <strong>Compartilhar → Adicionar ao álbum</strong> → selecione <strong>${esc(albumNome)}</strong></div>
+        </div>
+        <div class="howto-step">
+          <div class="howto-num">3</div>
+          <div class="howto-text">Pronto! A foto aparece automaticamente no álbum para todo o grupo 🎉</div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  // ── GRID DE FOTOS INDIVIDUAIS (aba Fotos da planilha) ───────────
+  if (fotos.length) {
+    const byDate = {};
+    fotos.forEach(f => {
+      const d = f.data || 'Sem data';
+      if (!byDate[d]) byDate[d] = [];
+      byDate[d].push(f);
+    });
+
+    html += Object.entries(byDate).map(([d, imgs]) => `
+      <div class="photo-day-group">
+        <div class="photo-day-label">${fmtDate(d)}</div>
+        <div class="photo-grid">
+          ${imgs.map(img => renderPhotoCard(img)).join('')}
+        </div>
+      </div>`).join('');
+
+  } else if (!albumUrl) {
+    // Sem álbum E sem fotos — exibe instrução de configuração
+    html = `<div class="photo-empty">
+      <span class="photo-empty-icon">📸</span>
+      <p>Configure o álbum de fotos na planilha Google.<br>
+      <small>Na aba <strong>Config</strong>, adicione a chave<br>
+      <code>album_fotos_url</code> com o link do Google Fotos.</small></p>
+    </div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+/**
+ * Renderiza um card de foto — adaptado ao tipo de URL detectado.
+ */
+function renderPhotoCard(img) {
+  const url = (img.url || '').trim();
+  const type = detectUrlType(url);
+  const thumb = smartThumb(url);
+  const original = smartOriginal(url);
+  const hasInfo = img.descricao || img.autor;
+  const infoHtml = hasInfo ? `<div class="photo-card-info">
+    ${img.descricao ? `<div class="photo-card-desc">${esc(img.descricao)}</div>` : ''}
+    ${img.autor ? `<div class="photo-card-meta">📷 ${esc(img.autor)}</div>` : ''}
+  </div>` : '';
+
+  // URL não embeddável (link compartilhado do Google Photos, etc.)
+  if (!thumb || type === 'gphotos-share') {
+    return `<a class="photo-card" href="${original}" target="_blank" rel="noopener">
+      <div class="photo-thumb-wrap">
+        <div class="photo-link-card">
+          <span class="photo-link-icon">🔗</span>
+          <span class="photo-link-label">${img.descricao ? esc(img.descricao) : 'Ver foto'}</span>
+          <span class="photo-link-hint">Toque para abrir</span>
+        </div>
+      </div>
+      ${infoHtml}
+    </a>`;
+  }
+
+  // Badge discreto de origem (só para Drive e lh3 — ajuda a debugar)
+  const badge = type === 'gdrive'
+    ? '<span class="url-type-badge">Drive</span>'
+    : type === 'gphotos-direct'
+    ? '<span class="url-type-badge">Photos</span>'
+    : '';
+
+  return `<a class="photo-card" href="${original}" target="_blank" rel="noopener">
+    <div class="photo-thumb-wrap">
+      <img src="${thumb}" alt="${esc(img.descricao || '')}" loading="lazy"
+        onerror="this.outerHTML='<div class=\\'photo-error\\'><span style=\\'font-size:2rem\\'>📷</span><span>${esc(img.descricao || 'Foto')}</span></div>'">
+      ${badge}
+    </div>
+    ${infoHtml}
+  </a>`;
 }
 
 // ═══════════════════════════════════════════════
@@ -1653,6 +1653,25 @@ function renderArquivos(){
   const url=cfg.shared_drive_url||CFG.SHARED_DRIVE_URL;
   const btn=document.getElementById('sharedDriveBtn');
   if(btn&&url) btn.href=url;
+
+  // Botão do álbum de fotos na aba Arquivos também
+  const albumArea=document.getElementById('albumArquivoArea');
+  if(albumArea){
+    const albumUrl=(cfg.album_fotos_url||cfg.album_url||'').trim();
+    if(albumUrl){
+      albumArea.innerHTML=`<a class="drive-btn" href="${albumUrl}" target="_blank" rel="noopener">
+        <div class="drive-btn-icon photos">📸</div>
+        <div class="drive-btn-text">
+          <strong>Álbum Google Fotos — ${esc(cfg.album_fotos_nome||'Canton Fair 2026')}</strong>
+          <span>Fotos da viagem em tempo real · todos podem adicionar</span>
+        </div>
+        <div class="drive-btn-arrow">→</div>
+      </a>`;
+    } else {
+      albumArea.innerHTML='';
+    }
+  }
+
   renderPersonalDrive();
 }
 
@@ -1666,16 +1685,8 @@ function renderPersonalDrive(){
       <div id="googleLoginBtn"></div>
     </div>`;
     if(window.google?.accounts?.id){
-      google.accounts.id.initialize({
-        client_id:CFG.GOOGLE_CLIENT_ID,
-        callback:onGoogleLogin,
-        auto_select:true,
-        cancel_on_tap_outside:false,
-      });
-      google.accounts.id.renderButton(document.getElementById('googleLoginBtn'),{
-        theme:document.documentElement.getAttribute('data-theme')==='dark'?'filled_black':'outline',
-        size:'large',shape:'pill',text:'signin_with',
-      });
+      google.accounts.id.initialize({client_id:CFG.GOOGLE_CLIENT_ID,callback:onGoogleLogin,auto_select:true,cancel_on_tap_outside:false});
+      google.accounts.id.renderButton(document.getElementById('googleLoginBtn'),{theme:document.documentElement.getAttribute('data-theme')==='dark'?'filled_black':'outline',size:'large',shape:'pill',text:'signin_with'});
       google.accounts.id.prompt();
     }
     return;
@@ -1701,18 +1712,17 @@ function renderPersonalDrive(){
 }
 
 // ═══════════════════════════════════════════════
-//  APPS — com ícones reais
+//  APPS
 // ═══════════════════════════════════════════════
 function renderApps(){
   const grid=document.getElementById('appsGrid');
   const list=D.apps||[];
   if(!list.length){grid.innerHTML='';return;}
   grid.innerHTML=list.map(a=>{
-    // Prioridade: icone_url da planilha > APP_ICONS padrão > emoji
-    const imgUrl = a.icone_url || APP_ICONS[a.nome] || '';
-    const iconHtml = imgUrl
-      ? `<div class="app-icon-wrap"><img src="${imgUrl}" alt="${a.nome}" onerror="this.parentElement.innerHTML='${a.icon||'📱'}'"></div>`
-      : `<div class="app-icon-wrap" style="font-size:1.8rem">${a.icon||'📱'}</div>`;
+    const imgUrl=a.icone_url||APP_ICONS[a.nome]||'';
+    const iconHtml=imgUrl
+      ?`<div class="app-icon-wrap"><img src="${imgUrl}" alt="${a.nome}" onerror="this.parentElement.innerHTML='${a.icon||'📱'}'"></div>`
+      :`<div class="app-icon-wrap" style="font-size:1.8rem">${a.icon||'📱'}</div>`;
     return `<div class="app-card">
       ${iconHtml}
       <div class="app-name">${a.nome}</div>
@@ -1759,7 +1769,7 @@ function showToast(msg){
   t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3200);
 }
-function esc(s){return String(s).replace(/'/g,"&#39;").replace(/"/g,'&quot;')}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
 
 init();
 </script>
